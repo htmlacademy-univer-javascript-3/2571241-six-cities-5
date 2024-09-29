@@ -2,8 +2,8 @@ import React from 'react';
 import MainPage from './pages/MainPage/MainPage';
 
 type AppScreenProps = {
-    rentalOffersCount: number
-}
+  rentalOffersCount: number;
+};
 
 function App(props: AppScreenProps): JSX.Element {
   return (

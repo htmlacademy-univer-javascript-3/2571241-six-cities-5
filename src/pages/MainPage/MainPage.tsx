@@ -1,8 +1,8 @@
 import OfferCard from './OfferCard';
 
 type MainPageProps = {
-  rentalOffersCount: number
-}
+  rentalOffersCount: number;
+};
 
 function MainPage(props: MainPageProps): JSX.Element {
   return (
@@ -87,7 +87,9 @@ function MainPage(props: MainPageProps): JSX.Element {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{props.rentalOffersCount} places to stay in Amsterdam</b>
+              <b className="places__found">
+                {props.rentalOffersCount} places to stay in Amsterdam
+              </b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -115,46 +117,51 @@ function MainPage(props: MainPageProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferCard 
+                <OfferCard
                   priceEUR={120}
                   isInBookmarks={false}
-                  isPremium={true}
+                  isPremium
                   ratingPercents={80}
                   cardType={'Apartment'}
-                  cardName={'Beautiful & luxurious apartment at great location'} 
-                  imgPath={'img/apartment-01.jpg'} />
-                <OfferCard 
+                  cardName={'Beautiful & luxurious apartment at great location'}
+                  imgPath={'img/apartment-01.jpg'}
+                />
+                <OfferCard
                   priceEUR={80}
-                  isInBookmarks={true}
+                  isInBookmarks
                   isPremium={false}
                   ratingPercents={80}
                   cardType={'Room'}
-                  cardName={'Wood and stone place'} 
-                  imgPath={'img/room.jpg'} />
-                <OfferCard 
+                  cardName={'Wood and stone place'}
+                  imgPath={'img/room.jpg'}
+                />
+                <OfferCard
                   priceEUR={132}
                   isInBookmarks={false}
                   isPremium={false}
                   ratingPercents={80}
                   cardType={'Apartment'}
-                  cardName={'Canal View Prinsengracht'} 
-                  imgPath={'img/apartment-02.jpg'} />
-                <OfferCard 
+                  cardName={'Canal View Prinsengracht'}
+                  imgPath={'img/apartment-02.jpg'}
+                />
+                <OfferCard
                   priceEUR={180}
                   isInBookmarks={false}
-                  isPremium={true}
+                  isPremium
                   ratingPercents={100}
                   cardType={'Apartment'}
-                  cardName={'Nice, cozy, warm big bed apartment'} 
-                  imgPath={'img/apartment-03.jpg'} />
-                <OfferCard 
+                  cardName={'Nice, cozy, warm big bed apartment'}
+                  imgPath={'img/apartment-03.jpg'}
+                />
+                <OfferCard
                   priceEUR={80}
-                  isInBookmarks={true}
+                  isInBookmarks
                   isPremium={false}
                   ratingPercents={80}
                   cardType={'Room'}
-                  cardName={'Wood and stone place'} 
-                  imgPath={'img/room.jpg'} />
+                  cardName={'Wood and stone place'}
+                  imgPath={'img/room.jpg'}
+                />
               </div>
             </section>
             <div className="cities__right-section">
