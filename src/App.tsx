@@ -1,5 +1,11 @@
-import React from 'react';
 import MainPage from './pages/MainPage/MainPage';
+import NotFound from './pages/errors/404';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AppRoutes, AuthorizationStatus } from './consts';
+import LoginPage from './pages/Login/LoginPage';
+import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
+import OfferPage from './pages/Offer/OfferPage';
+import PrivateRoute from './components/private-route';
 
 type AppScreenProps = {
   rentalOffersCount: number;
@@ -7,9 +13,25 @@ type AppScreenProps = {
 
 function App(props: AppScreenProps): JSX.Element {
   return (
-    <React.StrictMode>
-      <MainPage rentalOffersCount={props.rentalOffersCount} />
-    </React.StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path={AppRoutes.Root}
+          element={<MainPage rentalOffersCount={props.rentalOffersCount} />}
+        />
+        <Route path={AppRoutes.Login} element={<LoginPage />} />
+        <Route path={AppRoutes.Offer} element={<OfferPage />} />
+        <Route
+          path={AppRoutes.Favorites}
+          element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <FavoritesPage />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
