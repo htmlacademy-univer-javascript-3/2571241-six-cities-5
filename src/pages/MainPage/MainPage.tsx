@@ -1,5 +1,4 @@
 import { Offer } from '../../types/offer';
-import OfferCard from './OfferCard';
 import OffersList from './OffersList';
 
 type MainPageProps = {
