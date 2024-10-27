@@ -1,14 +1,7 @@
-type OfferCardProps = {
-  priceEUR: number;
-  isInBookmarks: boolean;
-  isPremium: boolean;
-  ratingPercents: number;
-  cardType: string;
-  cardName: string;
-  imgPath: string;
-};
+import { Offer } from "../../types/offer";
 
-function OfferCard(props: OfferCardProps): JSX.Element {
+function OfferCard(props: Offer): JSX.Element {
+  const highestRating = 5;
   return (
     <article className="cities__card place-card">
       {props.isPremium && (
@@ -20,7 +13,7 @@ function OfferCard(props: OfferCardProps): JSX.Element {
         <a href="#">
           <img
             className="place-card__image"
-            src={props.imgPath}
+            src={props.previewImage}
             width={260}
             height={200}
             alt="Place image"
@@ -30,12 +23,12 @@ function OfferCard(props: OfferCardProps): JSX.Element {
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">€{props.priceEUR}</b>
+            <b className="place-card__price-value">€{props.price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
           <button
             className={
-              props.isInBookmarks
+              props.isFavorite
                 ? 'place-card__bookmark-button place-card__bookmark-button--active button'
                 : 'place-card__bookmark-button button'
             }
@@ -45,7 +38,7 @@ function OfferCard(props: OfferCardProps): JSX.Element {
               <use xlinkHref="#icon-bookmark" />
             </svg>
             <span className="visually-hidden">
-              {props.isInBookmarks ? 'In bookmarks' : 'To bookmarks'}
+              {props.isFavorite ? 'In bookmarks' : 'To bookmarks'}
             </span>
           </button>
         </div>
@@ -53,16 +46,16 @@ function OfferCard(props: OfferCardProps): JSX.Element {
           <div className="place-card__stars rating__stars">
             <span
               style={{
-                width:`${props.ratingPercents}%`,
-              }}
+                width:`${(props.rating / highestRating) * 100}%`,
+              }}  
             />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{props.cardName}</a>
+          <a href="#">{props.title}</a>
         </h2>
-        <p className="place-card__type">{props.cardType}</p>
+        <p className="place-card__type">{props.type}</p>
       </div>
     </article>
   );

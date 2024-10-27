@@ -6,9 +6,11 @@ import LoginPage from './pages/Login/LoginPage';
 import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
 import OfferPage from './pages/Offer/OfferPage';
 import PrivateRoute from './components/private-route';
+import { Offer } from './types/offer';
 
 type AppScreenProps = {
-  rentalOffersCount: number;
+  rentalOffersCount: number,
+  offers: Offer[]
 };
 
 function App(props: AppScreenProps): JSX.Element {
@@ -17,7 +19,7 @@ function App(props: AppScreenProps): JSX.Element {
       <Routes>
         <Route
           path={AppRoutes.Root}
-          element={<MainPage rentalOffersCount={props.rentalOffersCount} />}
+          element={<MainPage rentalOffersCount={props.rentalOffersCount} offers={props.offers} />}
         />
         <Route path={AppRoutes.Login} element={<LoginPage />} />
         <Route path={AppRoutes.Offer} element={<OfferPage />} />
