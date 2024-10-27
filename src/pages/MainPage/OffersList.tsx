@@ -7,7 +7,7 @@ function OffersList(props: { offers: Offer[] }): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log(activeOffer);
+    console.debug(activeOffer);
   }, [activeOffer]);
   return (
     <div className="cities__places-list places__list tabs__content">

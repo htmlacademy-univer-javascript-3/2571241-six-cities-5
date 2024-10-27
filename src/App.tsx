@@ -26,8 +26,8 @@ function App(props: AppScreenProps): JSX.Element {
         <Route
           path={AppRoutes.Favorites}
           element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <FavoritesPage />
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <FavoritesPage offers={props.offers} />
             </PrivateRoute>
           }
         />
