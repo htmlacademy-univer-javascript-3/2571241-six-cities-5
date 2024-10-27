@@ -9,8 +9,8 @@ import PrivateRoute from './components/private-route';
 import { Offer } from './types/offer';
 
 type AppScreenProps = {
-  rentalOffersCount: number,
-  offers: Offer[]
+  rentalOffersCount: number;
+  offers: Offer[];
 };
 
 function App(props: AppScreenProps): JSX.Element {
@@ -19,7 +19,12 @@ function App(props: AppScreenProps): JSX.Element {
       <Routes>
         <Route
           path={AppRoutes.Root}
-          element={<MainPage rentalOffersCount={props.rentalOffersCount} offers={props.offers} />}
+          element={
+            <MainPage
+              rentalOffersCount={props.rentalOffersCount}
+              offers={props.offers}
+            />
+          }
         />
         <Route path={AppRoutes.Login} element={<LoginPage />} />
         <Route path={AppRoutes.Offer} element={<OfferPage />} />

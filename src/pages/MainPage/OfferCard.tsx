@@ -1,4 +1,5 @@
-import { Offer } from "../../types/offer";
+import { Link } from 'react-router-dom';
+import { Offer } from '../../types/offer';
 
 function OfferCard(props: Offer): JSX.Element {
   const highestRating = 5;
@@ -46,14 +47,14 @@ function OfferCard(props: Offer): JSX.Element {
           <div className="place-card__stars rating__stars">
             <span
               style={{
-                width:`${(props.rating / highestRating) * 100}%`,
-              }}  
+                width: `${(props.rating / highestRating) * 100}%`,
+              }}
             />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{props.title}</a>
+          <Link to={`/offer/${props.id}`}>{props.title}</Link>
         </h2>
         <p className="place-card__type">{props.type}</p>
       </div>

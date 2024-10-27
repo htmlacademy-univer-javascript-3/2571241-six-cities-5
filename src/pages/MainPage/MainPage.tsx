@@ -2,8 +2,8 @@ import { Offer } from '../../types/offer';
 import OffersList from './OffersList';
 
 type MainPageProps = {
-  rentalOffersCount: number,
-  offers: Offer[]
+  rentalOffersCount: number;
+  offers: Offer[];
 };
 
 function MainPage(props: MainPageProps): JSX.Element {

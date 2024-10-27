@@ -1,4 +1,4 @@
-import CommentForm from "./CommentForm";
+import CommentForm from './CommentForm';
 
 function OfferPage(): JSX.Element {
   return (

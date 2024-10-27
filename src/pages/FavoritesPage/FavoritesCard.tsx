@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../../types/offer';
 
-function FavoritesCard(props: { offer: Offer}): JSX.Element {
+function FavoritesCard(props: { offer: Offer }): JSX.Element {
   const { offer } = props;
   const bestRating = 5;
   return (
