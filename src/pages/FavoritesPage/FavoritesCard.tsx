@@ -19,7 +19,8 @@ function FavoritesCard(props: { offer: Offer }): JSX.Element {
             width="150"
             height="110"
             alt="Place image"
-          ></img>
+          >
+          </img>
         </a>
       </div>
       <div className="favorites__card-info place-card__info">
@@ -42,7 +43,8 @@ function FavoritesCard(props: { offer: Offer }): JSX.Element {
           <div className="place-card__stars rating__stars">
             <span
               style={{ width: `${(offer.rating / bestRating) * 100}%` }}
-            ></span>
+            >
+            </span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

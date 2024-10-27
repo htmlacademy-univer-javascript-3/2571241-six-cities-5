@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function CommentForm(): JSX.Element {
   const [formState, setFormState] = useState({ rating: 0, review: '' });
@@ -8,9 +8,6 @@ function CommentForm(): JSX.Element {
     const { name, value } = event.target;
     setFormState({ ...formState, [name]: value });
   };
-  useEffect(() => {
-    console.log('formState updated:', formState);
-  }, [formState]);
   return (
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">

@@ -1,14 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Offer } from '../../types/offer';
 import OfferCard from './OfferCard';
 
 function OffersList(props: { offers: Offer[] }): JSX.Element {
   const { offers } = props;
-  const [activeOffer, setActiveOffer] = useState<string | null>(null);
-
-  useEffect(() => {
-    console.debug(activeOffer);
-  }, [activeOffer]);
+  const [, setActiveOffer] = useState<string | null>(null);
   return (
     <div className="cities__places-list places__list tabs__content">
       {offers.map((offer) => (
