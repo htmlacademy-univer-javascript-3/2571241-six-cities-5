@@ -1,7 +1,9 @@
-import OfferCard from './OfferCard';
+import { Offer } from '../../types/offer';
+import OffersList from './OffersList';
 
 type MainPageProps = {
   rentalOffersCount: number;
+  offers: Offer[];
 };
 
 function MainPage(props: MainPageProps): JSX.Element {
@@ -116,53 +118,7 @@ function MainPage(props: MainPageProps): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                <OfferCard
-                  priceEUR={120}
-                  isInBookmarks={false}
-                  isPremium
-                  ratingPercents={80}
-                  cardType={'Apartment'}
-                  cardName={'Beautiful & luxurious apartment at great location'}
-                  imgPath={'img/apartment-01.jpg'}
-                />
-                <OfferCard
-                  priceEUR={80}
-                  isInBookmarks
-                  isPremium={false}
-                  ratingPercents={80}
-                  cardType={'Room'}
-                  cardName={'Wood and stone place'}
-                  imgPath={'img/room.jpg'}
-                />
-                <OfferCard
-                  priceEUR={132}
-                  isInBookmarks={false}
-                  isPremium={false}
-                  ratingPercents={80}
-                  cardType={'Apartment'}
-                  cardName={'Canal View Prinsengracht'}
-                  imgPath={'img/apartment-02.jpg'}
-                />
-                <OfferCard
-                  priceEUR={180}
-                  isInBookmarks={false}
-                  isPremium
-                  ratingPercents={100}
-                  cardType={'Apartment'}
-                  cardName={'Nice, cozy, warm big bed apartment'}
-                  imgPath={'img/apartment-03.jpg'}
-                />
-                <OfferCard
-                  priceEUR={80}
-                  isInBookmarks
-                  isPremium={false}
-                  ratingPercents={80}
-                  cardType={'Room'}
-                  cardName={'Wood and stone place'}
-                  imgPath={'img/room.jpg'}
-                />
-              </div>
+              <OffersList offers={props.offers} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" />
