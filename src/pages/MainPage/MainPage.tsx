@@ -1,12 +1,16 @@
+import { useState } from 'react';
+import { Map } from '../../components/map/map';
 import { Offer } from '../../types/offer';
 import OffersList from './OffersList';
+import { Nullable } from 'vitest';
 
 type MainPageProps = {
   rentalOffersCount: number;
   offers: Offer[];
 };
 
-function MainPage(props: MainPageProps): JSX.Element {
+function MainPage({ rentalOffersCount, offers }: MainPageProps): JSX.Element {
+  const [activeOffer, setActiveOffer] = useState<Nullable<Offer>>(null);
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -90,7 +94,7 @@ function MainPage(props: MainPageProps): JSX.Element {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">
-                {props.rentalOffersCount} places to stay in Amsterdam
+                {rentalOffersCount} places to stay in Amsterdam
               </b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
@@ -118,10 +122,28 @@ function MainPage(props: MainPageProps): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <OffersList offers={props.offers} />
+              <OffersList
+                offers={offers}
+                onActiveOfferChange={(offer: Nullable<Offer>) =>
+                  setActiveOffer(offer) }
+              />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              <Map
+                city={offers[0].city}
+                points={offers.map((x) => ({
+                  location: x.location,
+                  id: x.id,
+                }))}
+                selectedPoint={
+                  activeOffer
+                    ? {
+                      location: activeOffer.location,
+                      id: activeOffer.id,
+                    }
+                    : undefined
+                }
+              />
             </div>
           </div>
         </div>

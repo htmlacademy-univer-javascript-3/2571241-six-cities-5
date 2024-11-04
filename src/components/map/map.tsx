@@ -9,7 +9,7 @@ type MapProps = {
   city: City;
   points: Point[];
   selectedPoint: Point | undefined;
-}
+};
 
 const defaultCustomIcon = new Icon({
   iconUrl: 'public/img/pin.svg',
@@ -42,7 +42,7 @@ export function Map(props: MapProps): JSX.Element {
           .setIcon(
             selectedPoint !== undefined && point.id === selectedPoint.id
               ? currentCustomIcon
-              : defaultCustomIcon,
+              : defaultCustomIcon
           )
           .addTo(markerLayer);
       });

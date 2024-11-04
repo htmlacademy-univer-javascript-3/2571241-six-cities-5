@@ -10,9 +10,9 @@ export const offersMock: Offer[] = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
-        zoom: 13,
+        latitude: 52.35514938496378,
+        longitude: 4.673877537499948,
+        zoom: 8,
       },
     },
     location: {
@@ -33,9 +33,9 @@ export const offersMock: Offer[] = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
-        zoom: 13,
+        latitude: 52.35514938496378,
+        longitude: 4.673877537499948,
+        zoom: 8,
       },
     },
     location: {
@@ -56,9 +56,9 @@ export const offersMock: Offer[] = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
-        zoom: 13,
+        latitude: 52.35514938496378,
+        longitude: 4.673877537499948,
+        zoom: 8,
       },
     },
     location: {
@@ -79,9 +79,9 @@ export const offersMock: Offer[] = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
-        zoom: 13,
+        latitude: 52.35514938496378,
+        longitude: 4.673877537499948,
+        zoom: 8,
       },
     },
     location: {
