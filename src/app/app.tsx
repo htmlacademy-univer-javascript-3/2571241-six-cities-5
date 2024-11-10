@@ -2,9 +2,9 @@ import MainPage from '../components/pages/main-page/main-page';
 import NotFound from '../components/pages/errors/404';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { AppRoutes, AuthorizationStatus } from '../consts';
-import LoginPage from '../components/pages/login/login-page';
+import LoginPage from '../components/pages/login-page/login-page';
 import FavoritesPage from '../components/pages/favorites-page/favorites-page';
-import OfferPage from '../components/pages/offer/offer-page';
+import OfferPage from '../components/pages/offer-page/offer-page';
 import PrivateRoute from '../components/private-route';
 import { Offer } from '../types/offer';
 
