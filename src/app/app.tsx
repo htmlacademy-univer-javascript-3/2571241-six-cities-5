@@ -1,15 +1,14 @@
-import MainPage from './pages/MainPage/MainPage';
-import NotFound from './pages/errors/404';
+import MainPage from '../components/pages/main-page/main-page';
+import NotFound from '../components/pages/errors/404';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { AppRoutes, AuthorizationStatus } from './consts';
-import LoginPage from './pages/Login/LoginPage';
-import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
-import OfferPage from './pages/Offer/OfferPage';
-import PrivateRoute from './components/private-route';
-import { Offer } from './types/offer';
+import { AppRoutes, AuthorizationStatus } from '../consts';
+import LoginPage from '../components/pages/login/login-page';
+import FavoritesPage from '../components/pages/favorites-page/favorites-page';
+import OfferPage from '../components/pages/offer/offer-page';
+import PrivateRoute from '../components/private-route';
+import { Offer } from '../types/offer';
 
 type AppScreenProps = {
-  rentalOffersCount: number;
   offers: Offer[];
 };
 
@@ -21,7 +20,7 @@ function App(props: AppScreenProps): JSX.Element {
           path={AppRoutes.Root}
           element={
             <MainPage
-              rentalOffersCount={props.rentalOffersCount}
+              rentalOffersCount={props.offers.length}
               offers={props.offers}
             />
           }
