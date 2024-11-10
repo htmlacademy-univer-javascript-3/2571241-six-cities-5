@@ -3,7 +3,7 @@ import { Offer } from '../../../types/offer';
 
 function FavoritesCard(props: { offer: Offer }): JSX.Element {
   const { offer } = props;
-  const bestRating = 5;
+  const BEST_RATING = 5;
   return (
     <article className="favorites__card place-card">
       {offer.isPremium && (
@@ -42,7 +42,7 @@ function FavoritesCard(props: { offer: Offer }): JSX.Element {
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
             <span
-              style={{ width: `${(offer.rating / bestRating) * 100}%` }}
+              style={{ width: `${(offer.rating / BEST_RATING) * 100}%` }}
             >
             </span>
             <span className="visually-hidden">Rating</span>

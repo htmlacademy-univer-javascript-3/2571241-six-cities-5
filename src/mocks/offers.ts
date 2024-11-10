@@ -1,6 +1,6 @@
 import { Offer } from '../types/offer';
 
-export const offersMock: Offer[] = [
+export const OffersMock: Offer[] = [
   {
     id: '123b14bf-0e76-4007-a9aa-8845fc67cca6',
     title: 'Canal View Prinsengracht',
