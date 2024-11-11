@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Map } from '../../components/map/map';
-import { Offer } from '../../types/offer';
-import OffersList from './OffersList';
+import { Map } from '../../map/map';
+import { Offer } from '../../../types/offer';
+import OffersList from './offers-list';
 import { Nullable } from 'vitest';
 
 type MainPageProps = {
