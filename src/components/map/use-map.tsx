@@ -27,12 +27,21 @@ export function useMap(
         }
       );
 
-      instance.addLayer(layer); 
+      instance.addLayer(layer);
 
       setMap(instance);
       isRenderedRef.current = true;
     }
   }, [city, mapRef]);
+
+  useEffect(() => {
+    if (map) {
+      map.setView(
+        [city.location.latitude, city.location.longitude],
+        city.location.zoom
+      );
+    }
+  }, [map, city]);
 
   return map;
 }

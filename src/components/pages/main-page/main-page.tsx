@@ -9,8 +9,10 @@ import { CityData } from '../../../consts';
 
 function MainPage(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Nullable<Offer>>(null);
-  const activeCityName = useAppSelector((state) => state.cityName)
-  const offers = useAppSelector((state) => state.offerList).filter((offer) => offer.city.name == activeCityName)
+  const activeCityName = useAppSelector((state) => state.cityName);
+  const offers = useAppSelector((state) => state.offerList).filter(
+    (offer) => offer.city.name === activeCityName
+  );
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -53,7 +55,7 @@ function MainPage(): JSX.Element {
       </header>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
-        <CitiesList/>
+        <CitiesList />
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
@@ -90,7 +92,7 @@ function MainPage(): JSX.Element {
               <OffersList
                 offers={offers}
                 onActiveOfferChange={(offer: Nullable<Offer>) =>
-                  setActiveOffer(offer) }
+                  setActiveOffer(offer)}
               />
             </section>
             <div className="cities__right-section">

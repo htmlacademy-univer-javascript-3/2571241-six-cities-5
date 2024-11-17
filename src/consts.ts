@@ -73,7 +73,6 @@ export const CITY_INFO: City[] = [
   },
 ];
 
-
 export const CityData = {
   [CityName.Paris]: {
     name: CityName.Paris,
@@ -99,7 +98,7 @@ export const CityData = {
       zoom: 12,
     },
   },
-  [CityName.Amsterdam]:{
+  [CityName.Amsterdam]: {
     name: CityName.Amsterdam,
     location: {
       latitude: 52.374,
