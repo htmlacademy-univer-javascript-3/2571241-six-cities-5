@@ -16,7 +16,7 @@ export function useMap(
           lat: city.location.latitude,
           lng: city.location.longitude,
         },
-        zoom: 11,
+        zoom: city.location.zoom,
       });
 
       const layer = new TileLayer(
@@ -27,12 +27,12 @@ export function useMap(
         }
       );
 
-      instance.addLayer(layer);
+      instance.addLayer(layer); 
 
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, city]);
+  }, [city, mapRef]);
 
   return map;
 }
