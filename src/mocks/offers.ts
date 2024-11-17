@@ -1,6 +1,6 @@
 import { Offer } from '../types/offer';
 
-export const offersMock: Offer[] = [
+export const OffersMock: Offer[] = [
   {
     id: '123b14bf-0e76-4007-a9aa-8845fc67cca6',
     title: 'Canal View Prinsengracht',
@@ -10,8 +10,8 @@ export const offersMock: Offer[] = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 52.35514938496378,
-        longitude: 4.673877537499948,
+        latitude: 52.3909553943508,
+        longitude: 4.85309666406198,
         zoom: 8,
       },
     },

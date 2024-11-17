@@ -1,5 +1,5 @@
-import { Offer } from '../../types/offer';
-import FavoritesCard from './FavoritesCard';
+import { Offer } from '../../../types/offer';
+import FavoritesCard from './favorites-card';
 
 function FavoritesList(props: { offers: Offer[] }): JSX.Element {
   const { offers } = props;

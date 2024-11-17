@@ -1,9 +1,5 @@
 import { City } from './types/city';
 
-export const Settings = {
-  rentalOffersCount: 312,
-};
-
 export enum AppRoutes {
   Root = '/',
   Login = '/login',

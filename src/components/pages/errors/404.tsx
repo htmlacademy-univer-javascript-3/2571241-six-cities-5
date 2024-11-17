@@ -1,4 +1,4 @@
-import '../../../markup/css/404.css';
+import '../../../../markup/css/404.css';
 
 function NotFound(): JSX.Element {
   return (
