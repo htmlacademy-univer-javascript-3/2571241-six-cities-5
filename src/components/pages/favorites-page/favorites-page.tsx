@@ -2,7 +2,7 @@ import { useAppSelector } from '../../../store/hooks';
 import FavoritesList from './favorites-list';
 
 function FavoritesPage(): JSX.Element {
-  const offers = useAppSelector((state) => state.offerList)
+  const offers = useAppSelector((state) => state.offerList);
 
   return (
     <div className="page">

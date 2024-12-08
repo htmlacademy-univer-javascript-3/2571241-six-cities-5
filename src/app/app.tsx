@@ -10,25 +10,24 @@ import { useAppSelector } from '../store/hooks';
 import { LoadingScreen } from '../components/pages/loading-page/loading-page';
 
 function App(): JSX.Element {
-  const isDataStillLoading = useAppSelector((state) => state.isOffersDataLoading)
-
-  if (isDataStillLoading)
-    return <LoadingScreen />
+  const isDataStillLoading = useAppSelector(
+    (state) => state.isOffersDataLoading
+  );
+  if (isDataStillLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path={AppRoutes.Root}
-          element={<MainPage/>}
-        />
+        <Route path={AppRoutes.Root} element={<MainPage />} />
         <Route path={AppRoutes.Login} element={<LoginPage />} />
         <Route path={AppRoutes.Offer} element={<OfferPage />} />
         <Route
           path={AppRoutes.Favorites}
           element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <FavoritesPage/>
+              <FavoritesPage />
             </PrivateRoute>
           }
         />
