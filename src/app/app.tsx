@@ -6,12 +6,15 @@ import LoginPage from '../components/pages/login-page/login-page';
 import FavoritesPage from '../components/pages/favorites-page/favorites-page';
 import OfferPage from '../components/pages/offer-page/offer-page';
 import PrivateRoute from '../components/private-route';
-import { Offer } from '../types/offer';
-type AppScreenProps = {
-  offers: Offer[];
-};
+import { useAppSelector } from '../store/hooks';
+import { LoadingScreen } from '../components/pages/loading-page/loading-page';
 
-function App(props: AppScreenProps): JSX.Element {
+function App(): JSX.Element {
+  const isDataStillLoading = useAppSelector((state) => state.isOffersDataLoading)
+
+  if (isDataStillLoading)
+    return <LoadingScreen />
+
   return (
     <BrowserRouter>
       <Routes>
@@ -25,7 +28,7 @@ function App(props: AppScreenProps): JSX.Element {
           path={AppRoutes.Favorites}
           element={
             <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <FavoritesPage offers={props.offers} />
+              <FavoritesPage/>
             </PrivateRoute>
           }
         />

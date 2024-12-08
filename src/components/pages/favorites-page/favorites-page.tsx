@@ -1,8 +1,9 @@
-import { Offer } from '../../../types/offer';
+import { useAppSelector } from '../../../store/hooks';
 import FavoritesList from './favorites-list';
 
-function FavoritesPage(props: { offers: Offer[] }): JSX.Element {
-  const { offers } = props;
+function FavoritesPage(): JSX.Element {
+  const offers = useAppSelector((state) => state.offerList)
+
   return (
     <div className="page">
       <header className="header">
