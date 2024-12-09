@@ -7,11 +7,12 @@ import CitiesList from './cities-list';
 import { useAppSelector } from '../../../store/hooks';
 import { CityData } from '../../../consts';
 import { Header } from './header';
+import { getCurrentCityName, getOffers } from '../../../store/data-process/data-process.selectors';
 
 function MainPage(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Nullable<Offer>>(null);
-  const activeCityName = useAppSelector((state) => state.cityName);
-  const offers = useAppSelector((state) => state.offerList).filter(
+  const activeCityName = useAppSelector(getCurrentCityName);
+  const offers = useAppSelector(getOffers).filter(
     (offer) => offer.city.name === activeCityName
   );
   return (

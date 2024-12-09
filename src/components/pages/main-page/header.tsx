@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
-import { AppRoutes, AuthorizationStatus } from '../../../consts';
+import { AppRoutes } from '../../../consts';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { logoutAction } from '../../../store/api-actions';
+import { getOffers } from '../../../store/data-process/data-process.selectors';
+import { getAuthCheckedStatus } from '../../../store/user-process/user-process.selectors';
 
 export function Header(): JSX.Element {
-  const offers = useAppSelector((state) => state.offerList);
+  const offers = useAppSelector(getOffers);
   const favoritesCount = offers.filter((offer) => offer.isFavorite).length;
-  const isAuthorized =
-    useAppSelector((state) => state.authorizationStatus) ===
-    AuthorizationStatus.Auth;
+  const isAuthorized = useAppSelector(getAuthCheckedStatus);
   const dispatch = useAppDispatch();
 
   return (

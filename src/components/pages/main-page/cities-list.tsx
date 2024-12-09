@@ -1,11 +1,12 @@
 import { CITY_INFO, CityData } from '../../../consts';
-import { changeCityAction } from '../../../store/actions';
+import { getCurrentCityName } from '../../../store/data-process/data-process.selectors';
+import { changeCityAction } from '../../../store/data-process/data-process.slice';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { City } from '../../../types/city';
 
 function CitiesList(): JSX.Element {
   const dispatch = useAppDispatch();
-  const currentCityName = useAppSelector((state) => state.cityName);
+  const currentCityName = useAppSelector(getCurrentCityName);
   return (
     <div className="tabs">
       <section className="locations container">
