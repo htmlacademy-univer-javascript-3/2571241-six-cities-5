@@ -131,3 +131,8 @@ export const CityData = {
     },
   },
 };
+
+export enum StoreNameSpace {
+  Data = 'DATA',
+  User = 'USER',
+}
