@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CityName, StoreNameSpace } from '../../consts';
 import { DataProcess } from '../../types/state';
 import { fetchOffersAction } from '../api-actions';
+import { City } from '../../types/city';
 
 export const initialState: DataProcess = {
   cityName: CityName.Paris,
@@ -13,12 +14,9 @@ export const offersData = createSlice({
   name: StoreNameSpace.Data,
   initialState,
   reducers: {
-    changeCityAction: (
-      state,
-      action: PayloadAction<{ cityName: CityName }>
-    ) => {
-      const { cityName } = action.payload;
-      state.cityName = cityName;
+    changeCityAction: (state, action: PayloadAction<City>) => {
+      const city = action.payload;
+      state.cityName = city.name;
     },
   },
   extraReducers(builder) {
