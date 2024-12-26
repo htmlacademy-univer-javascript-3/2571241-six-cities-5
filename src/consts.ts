@@ -135,4 +135,11 @@ export const CityData = {
 export enum StoreNameSpace {
   Data = 'DATA',
   User = 'USER',
+  SingleOffer = 'SINGLE_OFFER'
+}
+
+export enum CardClass {
+  Cities = 'cities__card',
+  Nearby = 'near-places__card',
+  Favorites = 'favorites__card',
 }

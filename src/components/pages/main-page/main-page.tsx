@@ -5,9 +5,12 @@ import OffersList from './offers-list';
 import { Nullable } from 'vitest';
 import CitiesList from './cities-list';
 import { useAppSelector } from '../../../store/hooks';
-import { CityData } from '../../../consts';
+import { CardClass, CityData } from '../../../consts';
 import { Header } from './header';
-import { getCurrentCityName, getOffers } from '../../../store/data-process/data-process.selectors';
+import {
+  getCurrentCityName,
+  getOffers,
+} from '../../../store/data-process/data-process.selectors';
 
 function MainPage(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Nullable<Offer>>(null);
@@ -17,7 +20,7 @@ function MainPage(): JSX.Element {
   );
   return (
     <div className="page page--gray page--main">
-      <Header/>
+      <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <CitiesList />
@@ -58,6 +61,10 @@ function MainPage(): JSX.Element {
                 offers={offers}
                 onActiveOfferChange={(offer: Nullable<Offer>) =>
                   setActiveOffer(offer)}
+                cardClass={CardClass.Cities}
+                wrapperClassName={
+                  'cities__places-list places__list tabs__content'
+                }
               />
             </section>
             <div className="cities__right-section">

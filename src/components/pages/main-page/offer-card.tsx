@@ -1,35 +1,45 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../../../types/offer';
+import { CardClass } from '../../../consts';
 
-function OfferCard(props: Offer): JSX.Element {
+type OfferCardProps = {
+  offer: Offer;
+  cardClass: CardClass;
+};
+
+function OfferCard({ offer, cardClass }: OfferCardProps): JSX.Element {
   const highestRating = 5;
   return (
     <article className="cities__card place-card">
-      {props.isPremium && (
+      {offer.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
-            src={props.previewImage}
-            width={260}
-            height={200}
+            src={offer.previewImage}
+            width={cardClass === CardClass.Favorites ? 150 : 260}
+            height={cardClass === CardClass.Favorites ? 110 : 200}
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
-      <div className="place-card__info">
+      <div
+        className={`${
+          cardClass === CardClass.Favorites ? 'favorites__card-info' : ''
+        } place-card__info`}
+      >
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">€{props.price}</b>
+            <b className="place-card__price-value">€{offer.price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
           <button
             className={
-              props.isFavorite
+              offer.isFavorite
                 ? 'place-card__bookmark-button place-card__bookmark-button--active button'
                 : 'place-card__bookmark-button button'
             }
@@ -39,7 +49,7 @@ function OfferCard(props: Offer): JSX.Element {
               <use xlinkHref="#icon-bookmark" />
             </svg>
             <span className="visually-hidden">
-              {props.isFavorite ? 'In bookmarks' : 'To bookmarks'}
+              {offer.isFavorite ? 'In bookmarks' : 'To bookmarks'}
             </span>
           </button>
         </div>
@@ -47,16 +57,16 @@ function OfferCard(props: Offer): JSX.Element {
           <div className="place-card__stars rating__stars">
             <span
               style={{
-                width: `${(props.rating / highestRating) * 100}%`,
+                width: `${(offer.rating / highestRating) * 100}%`,
               }}
             />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${props.id}`}>{props.title}</Link>
+          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>
-        <p className="place-card__type">{props.type}</p>
+        <p className="place-card__type">{offer.type}</p>
       </div>
     </article>
   );
