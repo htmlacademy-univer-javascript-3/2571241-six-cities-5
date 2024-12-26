@@ -137,3 +137,9 @@ export enum StoreNameSpace {
   User = 'USER',
   SingleOffer = 'SINGLE_OFFER'
 }
+
+export enum CardClass {
+  Cities = 'cities__card',
+  Nearby = 'near-places__card',
+  Favorites = 'favorites__card',
+}
