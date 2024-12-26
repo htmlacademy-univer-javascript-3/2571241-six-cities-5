@@ -143,3 +143,17 @@ export enum CardClass {
   Nearby = 'near-places__card',
   Favorites = 'favorites__card',
 }
+
+export enum SortingOption {
+  Popular = 'Popular',
+  PriceLowToHigh = 'Price: low to high',
+  PriceHighToLow = 'Price: high to low',
+  TopRatedFirst = 'Top rated first'
+}
+
+export const SortingOptions = [
+  SortingOption.Popular,
+  SortingOption.PriceHighToLow,
+  SortingOption.PriceLowToHigh,
+  SortingOption.TopRatedFirst
+];
