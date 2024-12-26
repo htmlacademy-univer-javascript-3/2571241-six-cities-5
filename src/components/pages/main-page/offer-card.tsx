@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../../../types/offer';
-import { AppRoutes, CardClass } from '../../../consts';
+import { CardClass } from '../../../consts';
 
 type OfferCardProps = {
-  offer: Offer,
-  cardClass: CardClass
-}
+  offer: Offer;
+  cardClass: CardClass;
+};
 
-
-function OfferCard({offer, cardClass}: OfferCardProps): JSX.Element {
+function OfferCard({ offer, cardClass }: OfferCardProps): JSX.Element {
   const highestRating = 5;
   return (
     <article className="cities__card place-card">
@@ -18,7 +17,7 @@ function OfferCard({offer, cardClass}: OfferCardProps): JSX.Element {
         </div>
       )}
       <div className="cities__image-wrapper place-card__image-wrapper">
-      <Link to={`/offer/${offer.id}`}>
+        <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
             src={offer.previewImage}
@@ -28,7 +27,11 @@ function OfferCard({offer, cardClass}: OfferCardProps): JSX.Element {
           />
         </Link>
       </div>
-      <div className={`${cardClass === CardClass.Favorites ? 'favorites__card-info' : ''} place-card__info`}>
+      <div
+        className={`${
+          cardClass === CardClass.Favorites ? 'favorites__card-info' : ''
+        } place-card__info`}
+      >
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">€{offer.price}</b>

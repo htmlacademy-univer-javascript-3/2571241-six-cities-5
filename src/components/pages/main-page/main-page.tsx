@@ -60,8 +60,7 @@ function MainPage(): JSX.Element {
               <OffersList
                 offers={offers}
                 onActiveOfferChange={(offer: Nullable<Offer>) =>
-                  setActiveOffer(offer)
-                }
+                  setActiveOffer(offer)}
                 cardClass={CardClass.Cities}
                 wrapperClassName={
                   'cities__places-list places__list tabs__content'
@@ -78,9 +77,9 @@ function MainPage(): JSX.Element {
                 selectedPoint={
                   activeOffer
                     ? {
-                        location: activeOffer.location,
-                        id: activeOffer.id,
-                      }
+                      location: activeOffer.location,
+                      id: activeOffer.id,
+                    }
                     : undefined
                 }
               />

@@ -1,10 +1,14 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { SingleOffer } from "../../types/single-offer";
-import { StoreNameSpace } from "../../consts";
-import { SingleOfferProcess } from "../../types/state";
-import { Offer } from "../../types/offer";
-import { ReviewData } from "../../types/review-data";
-import { fetchNearbyOffersAction, fetchReviewsAction, fetchSingleOfferAction } from "../api-actions";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { SingleOffer } from '../../types/single-offer';
+import { StoreNameSpace } from '../../consts';
+import { SingleOfferProcess } from '../../types/state';
+import { Offer } from '../../types/offer';
+import { ReviewData } from '../../types/review-data';
+import {
+  fetchNearbyOffersAction,
+  fetchReviewsAction,
+  fetchSingleOfferAction,
+} from '../api-actions';
 
 const initialState: SingleOfferProcess = {
   singleOffer: null,
@@ -22,13 +26,19 @@ export const singleOfferData = createSlice({
     setSingleOffer: (state, action: PayloadAction<{ offer: SingleOffer }>) => {
       state.singleOffer = action.payload.offer;
     },
-    setNearbyOffers: (state, action: PayloadAction<{ nearbyOffers: Offer[] }>) => {
+    setNearbyOffers: (
+      state,
+      action: PayloadAction<{ nearbyOffers: Offer[] }>
+    ) => {
       state.nearbyOffers = action.payload.nearbyOffers;
     },
     setReviews: (state, action: PayloadAction<{ reviews: ReviewData[] }>) => {
       state.reviews = action.payload.reviews;
     },
-    setSingleOfferDataLoadingStatus: (state, action: PayloadAction<boolean>) => {
+    setSingleOfferDataLoadingStatus: (
+      state,
+      action: PayloadAction<boolean>
+    ) => {
       state.isSingleOfferDataLoading = action.payload;
     },
     sendReview: (state, action: PayloadAction<ReviewData>) => {
@@ -37,7 +47,6 @@ export const singleOfferData = createSlice({
     setFormAcceptedStatus: (state, action: PayloadAction<boolean>) => {
       state.isFormAccepted = action.payload;
     },
-
   },
   extraReducers(builder) {
     builder
@@ -67,8 +76,15 @@ export const singleOfferData = createSlice({
       })
       .addCase(fetchSingleOfferAction.pending, (state) => {
         state.isSingleOfferDataLoading = true;
-      })
-  }
+      });
+  },
 });
 
-export const { setSingleOffer, setNearbyOffers, setReviews, sendReview, setSingleOfferDataLoadingStatus, setFormAcceptedStatus } = singleOfferData.actions;
+export const {
+  setSingleOffer,
+  setNearbyOffers,
+  setReviews,
+  sendReview,
+  setSingleOfferDataLoadingStatus,
+  setFormAcceptedStatus,
+} = singleOfferData.actions;

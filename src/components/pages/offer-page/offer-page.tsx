@@ -16,8 +16,6 @@ import { LoadingScreen } from '../loading-page/loading-page';
 import { getAuthCheckedStatus } from '../../../store/user-process/user-process.selectors';
 import { Map } from '../../map/map';
 import OffersList from '../main-page/offers-list';
-import { Nullable } from 'vitest';
-import { Offer } from '../../../types/offer';
 import { CardClass } from '../../../consts';
 
 function OfferPage(): JSX.Element {
@@ -78,7 +76,8 @@ function OfferPage(): JSX.Element {
                     style={{
                       width: `${Math.round(currentOffer.rating) * 20}%`,
                     }}
-                  ></span>
+                  >
+                  </span>
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="offer__rating-value rating__value">
