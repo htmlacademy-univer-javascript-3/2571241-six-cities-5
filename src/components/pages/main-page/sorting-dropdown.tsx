@@ -2,18 +2,18 @@ import { useState } from 'react';
 import { SortingOption, SortingOptions } from '../../../consts';
 
 type SortingDropDownProps = {
-    onSortChange: (selectedSort: SortingOption) => void;
-  };
+  onSortChange: (selectedSort: SortingOption) => void;
+};
 
 function SortingDropdown({ onSortChange }: SortingDropDownProps): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState(SortingOption.Popular);
 
-  const handleSortChange = (selectedSort: SortingOption) => {
+  const handleSortChange = (sortOption: SortingOption) => {
     setIsOpen(false);
-    setSelectedSort(selectedSort);
-    onSortChange(selectedSort)
-  }
+    setSelectedSort(sortOption);
+    onSortChange(sortOption);
+  };
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by </span>

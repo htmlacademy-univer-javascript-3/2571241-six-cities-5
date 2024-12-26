@@ -135,7 +135,7 @@ export const CityData = {
 export enum StoreNameSpace {
   Data = 'DATA',
   User = 'USER',
-  SingleOffer = 'SINGLE_OFFER'
+  SingleOffer = 'SINGLE_OFFER',
 }
 
 export enum CardClass {
@@ -148,12 +148,12 @@ export enum SortingOption {
   Popular = 'Popular',
   PriceLowToHigh = 'Price: low to high',
   PriceHighToLow = 'Price: high to low',
-  TopRatedFirst = 'Top rated first'
+  TopRatedFirst = 'Top rated first',
 }
 
 export const SortingOptions = [
   SortingOption.Popular,
   SortingOption.PriceHighToLow,
   SortingOption.PriceLowToHigh,
-  SortingOption.TopRatedFirst
+  SortingOption.TopRatedFirst,
 ];

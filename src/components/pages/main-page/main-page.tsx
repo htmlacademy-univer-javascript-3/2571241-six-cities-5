@@ -38,7 +38,7 @@ function MainPage(): JSX.Element {
       default:
         break;
     }
-    return sorted
+    return sorted;
   };
   const sortedOffers = getSortedOffers();
   return (
@@ -54,14 +54,11 @@ function MainPage(): JSX.Element {
               <b className="places__found">
                 {offers.length} places to stay in {activeCityName}
               </b>
-              <SortingDropdown
-                onSortChange={setCurrentSort}
-              />
+              <SortingDropdown onSortChange={setCurrentSort} />
               <OffersList
                 offers={sortedOffers}
                 onActiveOfferChange={(offer: Nullable<Offer>) =>
-                  setActiveOffer(offer)
-                }
+                  setActiveOffer(offer)}
                 cardClass={CardClass.Cities}
                 wrapperClassName={
                   'cities__places-list places__list tabs__content'
@@ -78,9 +75,9 @@ function MainPage(): JSX.Element {
                 selectedPoint={
                   activeOffer
                     ? {
-                        location: activeOffer.location,
-                        id: activeOffer.id,
-                      }
+                      location: activeOffer.location,
+                      id: activeOffer.id,
+                    }
                     : undefined
                 }
               />
