@@ -9,7 +9,12 @@ import { dropToken, saveToken } from '../components/services/token';
 import { UserInfo } from '../types/userInfo';
 import { SingleOffer } from '../types/single-offer';
 import { ReviewData } from '../types/review-data';
-import { setNearbyOffers, setReviews, setSingleOffer } from './single-offer-data-process/single-offer-data-process.slice';
+import {
+  setNearbyOffers,
+  setReviews,
+  setSingleOffer,
+} from './single-offer-data-process/single-offer-data-process.slice';
+import { setFavoriteOffers, setUserData } from './user-process/user-process.slice';
 
 export const fetchOffersAction = createAsyncThunk<
   Offer[],
@@ -24,41 +29,60 @@ export const fetchOffersAction = createAsyncThunk<
   return data;
 });
 
-export const fetchReviewsAction = createAsyncThunk<void, { offerId: string }, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
-  'data/fetchReviews',
-  async ({offerId}, {dispatch, extra: api}) => {
-    const {data} = await api.get<ReviewData[]>(`${APIRoutes.Comments}/${offerId}`);
-    dispatch(setReviews({reviews: data}));
-  },
-);
+export const fetchReviewsAction = createAsyncThunk<
+  void,
+  { offerId: string },
+  {
+    dispatch: AppDispatch;
+    state: State;
+    extra: AxiosInstance;
+  }
+>('data/fetchReviews', async ({ offerId }, { dispatch, extra: api }) => {
+  const { data } = await api.get<ReviewData[]>(
+    `${APIRoutes.Comments}/${offerId}`
+  );
+  dispatch(setReviews({ reviews: data }));
+});
 
-export const fetchNearbyOffersAction = createAsyncThunk<void, {offerId: string}, {
-  dispatch: AppDispatch;
-  state: State;
-  extra: AxiosInstance;
-}>(
-  'data/fetchNearbyOffers',
-  async ({offerId}, {dispatch, extra: api}) => {
-    const {data} = await api.get<Offer[]>(`${APIRoutes.Offers}/${offerId}/nearby`);
-    dispatch(setNearbyOffers({nearbyOffers: data.slice(0, 3)}));
-  },
-);
+export const fetchNearbyOffersAction = createAsyncThunk<
+  void,
+  { offerId: string },
+  {
+    dispatch: AppDispatch;
+    state: State;
+    extra: AxiosInstance;
+  }
+>('data/fetchNearbyOffers', async ({ offerId }, { dispatch, extra: api }) => {
+  const { data } = await api.get<Offer[]>(
+    `${APIRoutes.Offers}/${offerId}/nearby`
+  );
+  dispatch(setNearbyOffers({ nearbyOffers: data.slice(0, 3) }));
+});
 
-export const fetchSingleOfferAction = createAsyncThunk<void, { offerId: string }, {
+export const fetchSingleOfferAction = createAsyncThunk<
+  void,
+  { offerId: string },
+  {
+    dispatch: AppDispatch;
+    state: State;
+    extra: AxiosInstance;
+  }
+>('data/fetchSingleOffer', async ({ offerId }, { dispatch, extra: api }) => {
+  const { data } = await api.get<SingleOffer>(`${APIRoutes.Offers}/${offerId}`);
+  dispatch(fetchReviewsAction({ offerId }));
+  dispatch(fetchNearbyOffersAction({ offerId }));
+  dispatch(setSingleOffer({ offer: data }));
+});
+
+export const fetchFavoriteOffersAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch;
   state: State;
   extra: AxiosInstance;
 }>(
-  'data/fetchSingleOffer',
-  async ({offerId}, {dispatch, extra: api}) => {
-    const {data} = await api.get<SingleOffer>(`${APIRoutes.Offers}/${offerId}`);
-    dispatch(fetchReviewsAction({offerId}));
-    dispatch(fetchNearbyOffersAction({offerId}));
-    dispatch(setSingleOffer({offer: data}));
+  'data/fetchFavoriteOffers',
+  async (_arg, {dispatch, extra: api}) => {
+    const {data} = await api.get<Offer[]>(APIRoutes.Favorites);
+    dispatch(setFavoriteOffers(data));
   },
 );
 
@@ -70,8 +94,9 @@ export const checkAuthAction = createAsyncThunk<
     state: State;
     extra: AxiosInstance;
   }
->('user/checkAuth', async (_arg, { extra: api }) => {
-  await api.get(APIRoutes.Login);
+>('user/checkAuth', async (_arg, {dispatch, extra: api }) => {
+  const {data} = await api.get<UserInfo>(APIRoutes.Login);
+  dispatch(setUserData(data))
 });
 
 export const loginAction = createAsyncThunk<
@@ -83,11 +108,11 @@ export const loginAction = createAsyncThunk<
     extra: AxiosInstance;
   }
 >('user/login', async (payload, { dispatch, extra: api }) => {
-  const {
-    data: { token },
-  } = await api.post<UserInfo>(APIRoutes.Login, payload);
-  saveToken(token);
+  const { data } = await api.post<UserInfo>(APIRoutes.Login, payload);
+  saveToken(data.token);
   dispatch(redirectToRoute(AppRoutes.Root));
+  dispatch(setUserData(data));
+  dispatch(fetchFavoriteOffersAction())
 });
 
 export const logoutAction = createAsyncThunk<

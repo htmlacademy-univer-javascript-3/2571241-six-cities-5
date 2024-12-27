@@ -1,16 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AuthorizationStatus, StoreNameSpace } from '../../consts';
 import { UserProcess } from '../../types/state';
 import { checkAuthAction, loginAction, logoutAction } from '../api-actions';
+import { UserInfo } from '../../types/userInfo';
+import { Offer } from '../../types/offer';
 
 const initialState: UserProcess = {
   authorizationStatus: AuthorizationStatus.Unknown,
+  user: null,
+  isUserDataStillLoading: false,
+  favoriteOffers: []
 };
 
 export const userProcess = createSlice({
   name: StoreNameSpace.User,
   initialState,
-  reducers: {},
+  reducers: {
+    setUserData: (state, action: PayloadAction<UserInfo|null>) => {
+      state.user = action.payload;
+    },
+    setFavoriteOffers: (state, action: PayloadAction<Offer[]>) => {
+      state.favoriteOffers = action.payload
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(checkAuthAction.fulfilled, (state) => {
@@ -30,3 +42,5 @@ export const userProcess = createSlice({
       });
   },
 });
+
+export const {setUserData, setFavoriteOffers} = userProcess.actions;
