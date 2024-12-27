@@ -161,6 +161,7 @@ export const loginAction = createAsyncThunk<
   dispatch(redirectToRoute(AppRoutes.Root));
   dispatch(setUserData(data));
   dispatch(fetchFavoriteOffersAction());
+  dispatch(fetchOffersAction())
 });
 
 export const logoutAction = createAsyncThunk<
@@ -171,7 +172,10 @@ export const logoutAction = createAsyncThunk<
     state: State;
     extra: AxiosInstance;
   }
->('user/logout', async (_arg, { extra: api }) => {
+>('user/logout', async (_arg, { dispatch, extra: api }) => {
   await api.delete(APIRoutes.Logout);
   dropToken();
+  dispatch(fetchOffersAction())
+  dispatch(setUserData(null))
+  dispatch(redirectToRoute(AppRoutes.Root));
 });

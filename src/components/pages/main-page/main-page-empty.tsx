@@ -1,7 +1,5 @@
-import { CityData } from '../../../consts';
 import { getCurrentCityName } from '../../../store/data-process/data-process.selectors';
 import { useAppSelector } from '../../../store/hooks';
-import { Map } from '../../map/map';
 
 function MainPageEmpty(): JSX.Element {
   const activeCityName = useAppSelector(getCurrentCityName);
@@ -14,11 +12,7 @@ function MainPageEmpty(): JSX.Element {
         </div>
       </section>
       <div className="cities__right-section">
-        <Map
-          city={CityData[activeCityName]}
-          points={[]}
-          selectedPoint={undefined}
-        />
+        <section className="cities__map map"></section>
       </div>
     </div>
   );
