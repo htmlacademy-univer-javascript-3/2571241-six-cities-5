@@ -17,6 +17,7 @@ import { getAuthCheckedStatus } from '../../../store/user-process/user-process.s
 import { Map } from '../../map/map';
 import OffersList from '../main-page/offers-list';
 import { CardClass } from '../../../consts';
+import NotFound from '../errors/404';
 
 function OfferPage(): JSX.Element {
   const offerId = useParams<{ id: string }>().id as string;
@@ -27,6 +28,11 @@ function OfferPage(): JSX.Element {
 
   const reviews = useAppSelector(getReviews);
   const currentOffer = useAppSelector(getSingleOffer);
+
+  if(currentOffer === null) {
+    return <NotFound />
+  }
+
   const isDataStillLoading = useAppSelector(getSingleOfferDataLoadingStatus);
   const isAuthorized = useAppSelector(getAuthCheckedStatus);
   const nearbyOffers = useAppSelector(getNearbyOffers);
