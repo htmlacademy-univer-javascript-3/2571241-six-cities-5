@@ -8,7 +8,7 @@ import { AuthInfo } from '../types/authInfo';
 import { dropToken, saveToken } from '../components/services/token';
 import { UserInfo } from '../types/userInfo';
 import { SingleOffer } from '../types/single-offer';
-import { ReviewData } from '../types/review-data';
+import { ReviewData, ReviewFromPerson } from '../types/review-data';
 import {
   setNearbyOffers,
   setReviews,
@@ -41,7 +41,7 @@ export const fetchReviewsAction = createAsyncThunk<
     extra: AxiosInstance;
   }
 >('data/fetchReviews', async ({ offerId }, { dispatch, extra: api }) => {
-  const { data } = await api.get<ReviewData[]>(
+  const { data } = await api.get<ReviewFromPerson[]>(
     `${APIRoutes.Comments}/${offerId}`
   );
   dispatch(setReviews({ reviews: data }));

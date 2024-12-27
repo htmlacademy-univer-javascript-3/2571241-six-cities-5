@@ -30,8 +30,6 @@ function CommentForm({ currentOfferId }: CommentFormProps): JSX.Element {
         comment: formState.review,
         rating: formState.rating,
         id: currentOfferId,
-        date: '',
-        user: null,
       })
     );
 

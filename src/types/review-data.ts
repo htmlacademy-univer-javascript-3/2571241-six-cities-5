@@ -4,6 +4,9 @@ export type ReviewData = {
   id: string;
   comment: string;
   rating: number;
-  date: string;
-  user: Person | null;
 };
+
+export type ReviewFromPerson = ReviewData & {
+  date: string;
+  user: Person;
+}
