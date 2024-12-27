@@ -11,9 +11,9 @@ export type AppDispatch = typeof store.dispatch;
 
 export type UserProcess = {
   authorizationStatus: AuthorizationStatus;
-  user: UserInfo | null
-  isUserDataStillLoading: boolean,
-  favoriteOffers: Offer[]
+  user: UserInfo | null;
+  isUserDataStillLoading: boolean;
+  favoriteOffers: Offer[];
 };
 export type DataProcess = {
   cityName: CityName;

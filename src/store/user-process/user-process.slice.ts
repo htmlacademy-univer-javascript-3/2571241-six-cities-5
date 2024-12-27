@@ -9,19 +9,19 @@ const initialState: UserProcess = {
   authorizationStatus: AuthorizationStatus.Unknown,
   user: null,
   isUserDataStillLoading: false,
-  favoriteOffers: []
+  favoriteOffers: [],
 };
 
 export const userProcess = createSlice({
   name: StoreNameSpace.User,
   initialState,
   reducers: {
-    setUserData: (state, action: PayloadAction<UserInfo|null>) => {
+    setUserData: (state, action: PayloadAction<UserInfo | null>) => {
       state.user = action.payload;
     },
     setFavoriteOffers: (state, action: PayloadAction<Offer[]>) => {
-      state.favoriteOffers = action.payload
-    }
+      state.favoriteOffers = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
@@ -43,4 +43,4 @@ export const userProcess = createSlice({
   },
 });
 
-export const {setUserData, setFavoriteOffers} = userProcess.actions;
+export const { setUserData, setFavoriteOffers } = userProcess.actions;
