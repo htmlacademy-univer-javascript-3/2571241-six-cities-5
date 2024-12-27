@@ -3,6 +3,7 @@ import { CityName, StoreNameSpace } from '../../consts';
 import { DataProcess } from '../../types/state';
 import { fetchOffersAction } from '../api-actions';
 import { City } from '../../types/city';
+import { Offer } from '../../types/offer';
 
 export const initialState: DataProcess = {
   cityName: CityName.Paris,
@@ -18,6 +19,13 @@ export const offersData = createSlice({
       const city = action.payload;
       state.cityName = city.name;
     },
+    updateFavoriteInfo(state, action: PayloadAction<{offerToUpdate: Offer}>) {
+      const { offerToUpdate } = action.payload
+      const offerIndex = state.offerList.findIndex((offer) => offer.id == offerToUpdate.id)
+      if(offerIndex !== -1){
+        state.offerList[offerIndex] = offerToUpdate
+      }
+    }
   },
   extraReducers(builder) {
     builder
@@ -34,4 +42,4 @@ export const offersData = createSlice({
   },
 });
 
-export const { changeCityAction } = offersData.actions;
+export const { changeCityAction, updateFavoriteInfo } = offersData.actions;

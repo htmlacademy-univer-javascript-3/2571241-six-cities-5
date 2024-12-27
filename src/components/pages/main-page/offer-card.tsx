@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../../../types/offer';
-import { CardClass } from '../../../consts';
+import { AppRoutes, CardClass } from '../../../consts';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { getAuthCheckedStatus } from '../../../store/user-process/user-process.selectors';
+import { redirectToRoute } from '../../../store/actions';
+import { editFavoritesAction } from '../../../store/api-actions';
 
 type OfferCardProps = {
   offer: Offer;
@@ -9,6 +13,15 @@ type OfferCardProps = {
 
 function OfferCard({ offer, cardClass }: OfferCardProps): JSX.Element {
   const highestRating = 5;
+  const isAuth = useAppSelector(getAuthCheckedStatus);
+  const dispatch = useAppDispatch();
+  const handleBookmarkClick = () => {
+    if(!isAuth) {
+      dispatch(redirectToRoute(AppRoutes.Login))
+    } else {
+      dispatch(editFavoritesAction({offerId: offer.id, isFavoriteNow: offer.isFavorite}));
+    }
+  }
   return (
     <article className="cities__card place-card">
       {offer.isPremium && (
@@ -44,6 +57,7 @@ function OfferCard({ offer, cardClass }: OfferCardProps): JSX.Element {
                 : 'place-card__bookmark-button button'
             }
             type="button"
+            onClick={handleBookmarkClick}
           >
             <svg className="place-card__bookmark-icon" width={18} height={19}>
               <use xlinkHref="#icon-bookmark" />

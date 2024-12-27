@@ -22,6 +22,15 @@ export const userProcess = createSlice({
     setFavoriteOffers: (state, action: PayloadAction<Offer[]>) => {
       state.favoriteOffers = action.payload;
     },
+    updateUserFavorites: (state, action: PayloadAction<{ editedOffer: Offer }>) => {
+      const { editedOffer } = action.payload;
+      const offerIndex = state.favoriteOffers.findIndex((offer) => offer.id === editedOffer.id)
+      if (offerIndex === -1) {
+        state.favoriteOffers.push(editedOffer)
+      } else {
+        state.favoriteOffers.splice(offerIndex, 1)
+      }
+    }
   },
   extraReducers(builder) {
     builder
@@ -43,4 +52,4 @@ export const userProcess = createSlice({
   },
 });
 
-export const { setUserData, setFavoriteOffers } = userProcess.actions;
+export const { setUserData, setFavoriteOffers, updateUserFavorites } = userProcess.actions;
