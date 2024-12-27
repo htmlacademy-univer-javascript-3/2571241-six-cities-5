@@ -12,6 +12,7 @@ import {
   getOffers,
 } from '../../../store/data-process/data-process.selectors';
 import SortingDropdown from './sorting-dropdown';
+import MainPageEmpty from './main-page-empty';
 
 function MainPage(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Nullable<Offer>>(null);
@@ -48,6 +49,7 @@ function MainPage(): JSX.Element {
         <h1 className="visually-hidden">Cities</h1>
         <CitiesList />
         <div className="cities">
+          {sortedOffers.length > 0 ? (
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
@@ -82,7 +84,7 @@ function MainPage(): JSX.Element {
                 }
               />
             </div>
-          </div>
+          </div>) : <MainPageEmpty/>}
         </div>
       </main>
     </div>
