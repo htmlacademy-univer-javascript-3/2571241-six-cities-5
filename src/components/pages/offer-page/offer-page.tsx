@@ -10,13 +10,19 @@ import { Header } from '../main-page/header';
 import CommentForm from './comment-form';
 import { ReviewList } from './review-list';
 import { useEffect } from 'react';
-import { fetchSingleOfferAction } from '../../../store/api-actions';
+import {
+  editFavoritesAction,
+  fetchSingleOfferAction,
+} from '../../../store/api-actions';
 import { OfferGallery } from './offer-gallery';
 import { LoadingScreen } from '../loading-page/loading-page';
 import { getAuthCheckedStatus } from '../../../store/user-process/user-process.selectors';
 import { Map } from '../../map/map';
 import OffersList from '../main-page/offers-list';
-import { CardClass } from '../../../consts';
+import { AppRoutes, CardClass } from '../../../consts';
+import NotFound from '../errors/404';
+import { redirectToRoute } from '../../../store/actions';
+import { updateSingleOfferFavoritesStatus } from '../../../store/single-offer-data-process/single-offer-data-process.slice';
 
 function OfferPage(): JSX.Element {
   const offerId = useParams<{ id: string }>().id as string;
@@ -30,13 +36,32 @@ function OfferPage(): JSX.Element {
   const isDataStillLoading = useAppSelector(getSingleOfferDataLoadingStatus);
   const isAuthorized = useAppSelector(getAuthCheckedStatus);
   const nearbyOffers = useAppSelector(getNearbyOffers);
+
+  if (currentOffer === null && !isDataStillLoading) {
+    return <NotFound />;
+  }
+
   if (!currentOffer || isDataStillLoading) {
     return <LoadingScreen />;
   }
-
   const currentOfferPoint = {
     location: currentOffer.location,
     id: currentOffer.id,
+  };
+
+  const handleClick = (event: React.MouseEvent) => {
+    event.preventDefault();
+    if (isAuthorized) {
+      dispatch(
+        editFavoritesAction({
+          offerId: currentOffer.id,
+          isFavoriteNow: currentOffer.isFavorite,
+        })
+      );
+      dispatch(updateSingleOfferFavoritesStatus());
+    } else {
+      dispatch(redirectToRoute(AppRoutes.Login));
+    }
   };
 
   return (
@@ -59,6 +84,7 @@ function OfferPage(): JSX.Element {
                     currentOffer.isFavorite ? '--active' : ''
                   } button`}
                   type="button"
+                  onClick={handleClick}
                 >
                   <svg className="offer__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
@@ -143,7 +169,9 @@ function OfferPage(): JSX.Element {
                   <span className="reviews__amount">{reviews.length}</span>
                 </h2>
                 <ReviewList reviews={reviews} />
-                {isAuthorized && <CommentForm currentOfferId={currentOffer.id} />}
+                {isAuthorized && (
+                  <CommentForm currentOfferId={currentOffer.id} />
+                )}
               </section>
             </div>
           </div>

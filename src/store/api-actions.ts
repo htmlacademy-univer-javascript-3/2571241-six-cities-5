@@ -13,11 +13,14 @@ import {
   setNearbyOffers,
   setReviews,
   setSingleOffer,
+  updateFavoritesNearbyInfo,
 } from './single-offer-data-process/single-offer-data-process.slice';
 import {
   setFavoriteOffers,
   setUserData,
+  updateUserFavorites,
 } from './user-process/user-process.slice';
+import { updateFavoriteInfo } from './data-process/data-process.slice';
 
 export const fetchOffersAction = createAsyncThunk<
   Offer[],
@@ -110,6 +113,26 @@ export const fetchFavoriteOffersAction = createAsyncThunk<
   dispatch(setFavoriteOffers(data));
 });
 
+export const editFavoritesAction = createAsyncThunk<
+  void,
+  { offerId: string; isFavoriteNow: boolean },
+  {
+    dispatch: AppDispatch;
+    state: State;
+    extra: AxiosInstance;
+  }
+>(
+  'user/editFavorites',
+  async ({ offerId, isFavoriteNow }, { dispatch, extra: api }) => {
+    const { data } = await api.post<Offer & SingleOffer>(
+      `${APIRoutes.Favorites}/${offerId}/${isFavoriteNow ? 0 : 1}`
+    );
+    dispatch(updateUserFavorites({ editedOffer: data }));
+    dispatch(updateFavoriteInfo({ offerToUpdate: data }));
+    dispatch(updateFavoritesNearbyInfo({ offerToUpdate: data }));
+  }
+);
+
 export const checkAuthAction = createAsyncThunk<
   void,
   undefined,
@@ -120,6 +143,7 @@ export const checkAuthAction = createAsyncThunk<
   }
 >('user/checkAuth', async (_arg, { dispatch, extra: api }) => {
   const { data } = await api.get<UserInfo>(APIRoutes.Login);
+  dispatch(fetchFavoriteOffersAction());
   dispatch(setUserData(data));
 });
 

@@ -32,7 +32,10 @@ export const singleOfferData = createSlice({
     ) => {
       state.nearbyOffers = action.payload.nearbyOffers;
     },
-    setReviews: (state, action: PayloadAction<{ reviews: ReviewFromPerson[] }>) => {
+    setReviews: (
+      state,
+      action: PayloadAction<{ reviews: ReviewFromPerson[] }>
+    ) => {
       state.reviews = action.payload.reviews;
     },
     setSingleOfferDataLoadingStatus: (
@@ -46,6 +49,23 @@ export const singleOfferData = createSlice({
     },
     setFormAcceptedStatus: (state, action: PayloadAction<boolean>) => {
       state.isFormAccepted = action.payload;
+    },
+    updateFavoritesNearbyInfo: (
+      state,
+      action: PayloadAction<{ offerToUpdate: Offer }>
+    ) => {
+      const { offerToUpdate } = action.payload;
+      const offerIndex = state.nearbyOffers.findIndex(
+        (offer) => offer.id === offerToUpdate.id
+      );
+      if (offerIndex !== -1) {
+        state.nearbyOffers[offerIndex] = offerToUpdate;
+      }
+    },
+    updateSingleOfferFavoritesStatus: (state) => {
+      if (state.singleOffer !== null) {
+        state.singleOffer.isFavorite = !state.singleOffer?.isFavorite;
+      }
     },
   },
   extraReducers(builder) {
@@ -87,4 +107,6 @@ export const {
   sendReview,
   setSingleOfferDataLoadingStatus,
   setFormAcceptedStatus,
+  updateFavoritesNearbyInfo,
+  updateSingleOfferFavoritesStatus,
 } = singleOfferData.actions;
