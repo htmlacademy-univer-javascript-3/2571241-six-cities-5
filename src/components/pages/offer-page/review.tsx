@@ -1,7 +1,7 @@
-import { ReviewData } from '../../../types/review-data';
+import { ReviewFromPerson } from '../../../types/review-data';
 
 type ReviewProps = {
-  review: ReviewData;
+  review: ReviewFromPerson;
 };
 
 const getFormattedDate = (date: string) =>

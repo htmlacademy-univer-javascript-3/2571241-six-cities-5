@@ -3,7 +3,7 @@ import { SingleOffer } from '../../types/single-offer';
 import { StoreNameSpace } from '../../consts';
 import { SingleOfferProcess } from '../../types/state';
 import { Offer } from '../../types/offer';
-import { ReviewData } from '../../types/review-data';
+import { ReviewFromPerson } from '../../types/review-data';
 import {
   fetchNearbyOffersAction,
   fetchReviewsAction,
@@ -32,7 +32,7 @@ export const singleOfferData = createSlice({
     ) => {
       state.nearbyOffers = action.payload.nearbyOffers;
     },
-    setReviews: (state, action: PayloadAction<{ reviews: ReviewData[] }>) => {
+    setReviews: (state, action: PayloadAction<{ reviews: ReviewFromPerson[] }>) => {
       state.reviews = action.payload.reviews;
     },
     setSingleOfferDataLoadingStatus: (
@@ -41,7 +41,7 @@ export const singleOfferData = createSlice({
     ) => {
       state.isSingleOfferDataLoading = action.payload;
     },
-    sendReview: (state, action: PayloadAction<ReviewData>) => {
+    sendReview: (state, action: PayloadAction<ReviewFromPerson>) => {
       state.reviews.push(action.payload);
     },
     setFormAcceptedStatus: (state, action: PayloadAction<boolean>) => {

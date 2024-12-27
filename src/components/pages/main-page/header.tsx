@@ -2,13 +2,16 @@ import { Link } from 'react-router-dom';
 import { AppRoutes } from '../../../consts';
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { logoutAction } from '../../../store/api-actions';
-import { getOffers } from '../../../store/data-process/data-process.selectors';
-import { getAuthCheckedStatus } from '../../../store/user-process/user-process.selectors';
+import {
+  getAuthCheckedStatus,
+  getFavoriteOffersCount,
+  getUserData,
+} from '../../../store/user-process/user-process.selectors';
 
 export function Header(): JSX.Element {
-  const offers = useAppSelector(getOffers);
-  const favoritesCount = offers.filter((offer) => offer.isFavorite).length;
+  const favoritesCount = useAppSelector(getFavoriteOffersCount);
   const isAuthorized = useAppSelector(getAuthCheckedStatus);
+  const userData = useAppSelector(getUserData);
   const dispatch = useAppDispatch();
 
   return (
@@ -36,7 +39,7 @@ export function Header(): JSX.Element {
                   >
                     <div className="header__avatar-wrapper user__avatar-wrapper"></div>
                     <span className="header__user-name user__name">
-                      Oliver.conner@gmail.com
+                      {userData?.name}
                     </span>
                     <span className="header__favorite-count">
                       {favoritesCount}
