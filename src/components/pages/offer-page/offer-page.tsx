@@ -10,7 +10,10 @@ import { Header } from '../main-page/header';
 import CommentForm from './comment-form';
 import { ReviewList } from './review-list';
 import { useEffect } from 'react';
-import { editFavoritesAction, fetchSingleOfferAction } from '../../../store/api-actions';
+import {
+  editFavoritesAction,
+  fetchSingleOfferAction,
+} from '../../../store/api-actions';
 import { OfferGallery } from './offer-gallery';
 import { LoadingScreen } from '../loading-page/loading-page';
 import { getAuthCheckedStatus } from '../../../store/user-process/user-process.selectors';
@@ -27,15 +30,15 @@ function OfferPage(): JSX.Element {
   useEffect(() => {
     dispatch(fetchSingleOfferAction({ offerId }));
   }, [offerId, dispatch]);
-  
+
   const reviews = useAppSelector(getReviews);
   const currentOffer = useAppSelector(getSingleOffer);
   const isDataStillLoading = useAppSelector(getSingleOfferDataLoadingStatus);
   const isAuthorized = useAppSelector(getAuthCheckedStatus);
   const nearbyOffers = useAppSelector(getNearbyOffers);
 
-  if(currentOffer === null && !isDataStillLoading) {
-    return <NotFound />
+  if (currentOffer === null && !isDataStillLoading) {
+    return <NotFound />;
   }
 
   if (!currentOffer || isDataStillLoading) {
@@ -49,11 +52,13 @@ function OfferPage(): JSX.Element {
   const handleClick = (event: React.MouseEvent) => {
     event.preventDefault();
     if (isAuthorized) {
-      dispatch(editFavoritesAction({
-        offerId: currentOffer.id,
-        isFavoriteNow: currentOffer.isFavorite
-      }));
-      dispatch(updateSingleOfferFavoritesStatus())
+      dispatch(
+        editFavoritesAction({
+          offerId: currentOffer.id,
+          isFavoriteNow: currentOffer.isFavorite,
+        })
+      );
+      dispatch(updateSingleOfferFavoritesStatus());
     } else {
       dispatch(redirectToRoute(AppRoutes.Login));
     }
@@ -164,7 +169,9 @@ function OfferPage(): JSX.Element {
                   <span className="reviews__amount">{reviews.length}</span>
                 </h2>
                 <ReviewList reviews={reviews} />
-                {isAuthorized && <CommentForm currentOfferId={currentOffer.id} />}
+                {isAuthorized && (
+                  <CommentForm currentOfferId={currentOffer.id} />
+                )}
               </section>
             </div>
           </div>

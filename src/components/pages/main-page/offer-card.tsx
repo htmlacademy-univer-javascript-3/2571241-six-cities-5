@@ -16,12 +16,17 @@ function OfferCard({ offer, cardClass }: OfferCardProps): JSX.Element {
   const isAuth = useAppSelector(getAuthCheckedStatus);
   const dispatch = useAppDispatch();
   const handleBookmarkClick = () => {
-    if(!isAuth) {
-      dispatch(redirectToRoute(AppRoutes.Login))
+    if (!isAuth) {
+      dispatch(redirectToRoute(AppRoutes.Login));
     } else {
-      dispatch(editFavoritesAction({offerId: offer.id, isFavoriteNow: offer.isFavorite}));
+      dispatch(
+        editFavoritesAction({
+          offerId: offer.id,
+          isFavoriteNow: offer.isFavorite,
+        })
+      );
     }
-  }
+  };
   return (
     <article className="cities__card place-card">
       {offer.isPremium && (

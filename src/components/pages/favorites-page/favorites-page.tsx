@@ -18,24 +18,28 @@ function FavoritesPage(): JSX.Element {
     dispatch(changeCityAction(city));
     dispatch(redirectToRoute(AppRoutes.Root));
   };
-  if(!favorites){
-    return <LoadingScreen/>
+  if (!favorites) {
+    return <LoadingScreen />;
   }
   return (
     <div className="page">
       <Header />
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
-        {favorites.length > 0 ? (
+          {favorites.length > 0 ? (
             <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">
                 {CITY_INFO.map((city) => {
                   const cityFavorites = favorites.filter(
-                    (favorite) => favorite.city.name === city.name);
+                    (favorite) => favorite.city.name === city.name
+                  );
                   return (
                     cityFavorites.length > 0 && (
-                      <li key={city.name} className="favorites__locations-items">
+                      <li
+                        key={city.name}
+                        className="favorites__locations-items"
+                      >
                         <div className="favorites__locations locations locations--current">
                           <div className="locations__item">
                             <Link
@@ -53,11 +57,15 @@ function FavoritesPage(): JSX.Element {
                           cardClass={CardClass.Favorites}
                           wrapperClassName="favorites__places"
                         />
-                      </li>)
+                      </li>
+                    )
                   );
                 })}
               </ul>
-            </section>) : (<FavoritesEmptyPage />)}
+            </section>
+          ) : (
+            <FavoritesEmptyPage />
+          )}
         </div>
       </main>
       <footer className="footer container">

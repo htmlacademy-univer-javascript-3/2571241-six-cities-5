@@ -56,7 +56,7 @@ export const singleOfferData = createSlice({
     ) => {
       const { offerToUpdate } = action.payload;
       const offerIndex = state.nearbyOffers.findIndex(
-        (offer) => offer.id == offerToUpdate.id
+        (offer) => offer.id === offerToUpdate.id
       );
       if (offerIndex !== -1) {
         state.nearbyOffers[offerIndex] = offerToUpdate;
@@ -108,5 +108,5 @@ export const {
   setSingleOfferDataLoadingStatus,
   setFormAcceptedStatus,
   updateFavoritesNearbyInfo,
-  updateSingleOfferFavoritesStatus
+  updateSingleOfferFavoritesStatus,
 } = singleOfferData.actions;
