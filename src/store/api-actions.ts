@@ -44,6 +44,19 @@ export const fetchReviewsAction = createAsyncThunk<
   dispatch(setReviews({ reviews: data }));
 });
 
+export const postReviewAction = createAsyncThunk<void, ReviewData, {
+  dispatch: AppDispatch;
+  state: State;
+  extra: AxiosInstance;
+}>(
+  'review/postReview',
+  async ({comment, rating, id}, {dispatch, extra: api}) => {
+    const parsedRating = Number(rating);
+    await api.post(`${APIRoutes.Comments}/${id}`, {comment, rating: parsedRating});
+    dispatch(fetchReviewsAction({offerId:id}));
+  },
+);
+
 export const fetchNearbyOffersAction = createAsyncThunk<
   void,
   { offerId: string },

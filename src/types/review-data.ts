@@ -5,5 +5,5 @@ export type ReviewData = {
   comment: string;
   rating: number;
   date: string;
-  user: Person;
+  user: Person | null;
 };

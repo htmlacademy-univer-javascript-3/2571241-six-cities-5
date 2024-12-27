@@ -143,7 +143,7 @@ function OfferPage(): JSX.Element {
                   <span className="reviews__amount">{reviews.length}</span>
                 </h2>
                 <ReviewList reviews={reviews} />
-                {isAuthorized && <CommentForm />}
+                {isAuthorized && <CommentForm currentOfferId={currentOffer.id} />}
               </section>
             </div>
           </div>
