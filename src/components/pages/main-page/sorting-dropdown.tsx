@@ -49,4 +49,5 @@ function SortingDropdown({ onSortChange }: SortingDropDownProps): JSX.Element {
   );
 }
 
-export default memo(SortingDropdown);
+const MemorizedSortingDropdown = memo(SortingDropdown);
+export default MemorizedSortingDropdown;

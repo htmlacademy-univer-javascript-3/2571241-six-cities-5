@@ -10,7 +10,7 @@ function CitiesList(): JSX.Element {
   const currentCityName = useAppSelector(getCurrentCityName);
   const handleCityClick = useCallback(
     (city: City) => dispatch(changeCityAction(city)),
-    [currentCityName]
+    [dispatch]
   );
   return (
     <div className="tabs">
@@ -36,4 +36,5 @@ function CitiesList(): JSX.Element {
   );
 }
 
-export default memo(CitiesList);
+const MemorizedCitiesList = memo(CitiesList);
+export default MemorizedCitiesList;

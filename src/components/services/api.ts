@@ -10,20 +10,19 @@ import { StatusCodes } from 'http-status-codes';
 
 const BACKEND_URL = 'https://14.design.htmlacademy.pro/six-cities';
 const REQUEST_TIMEOUT = 5000;
-const shouldDisplayError = (response: AxiosResponse) =>
-  !!StatusCodeMapping[response.status];
-
-type DetailMessageType = {
-  type: string;
-  message: string;
-};
-
 const StatusCodeMapping: Record<number, boolean> = {
   [StatusCodes.NOT_FOUND]: true,
   [StatusCodes.BAD_REQUEST]: true,
   [StatusCodes.BAD_GATEWAY]: true,
   [StatusCodes.GATEWAY_TIMEOUT]: true,
   [StatusCodes.CONFLICT]: true,
+};
+const shouldDisplayError = (response: AxiosResponse) =>
+  !!StatusCodeMapping[response.status];
+
+type DetailMessageType = {
+  type: string;
+  message: string;
 };
 
 export const createAPI = (): AxiosInstance => {

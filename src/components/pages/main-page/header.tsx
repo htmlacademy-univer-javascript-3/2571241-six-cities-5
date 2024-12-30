@@ -74,5 +74,5 @@ function Header(): JSX.Element {
   );
 }
 
-
-export default memo(Header);
+const MemorizedHeader = memo(Header);
+export default MemorizedHeader;

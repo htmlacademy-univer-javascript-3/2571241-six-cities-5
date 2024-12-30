@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Map } from '../../map/map';
 import { Offer } from '../../../types/offer';
 import OffersList from './offers-list';
@@ -22,10 +22,6 @@ function MainPage(): JSX.Element {
   const activeCityName = useAppSelector(getCurrentCityName);
   const offers = useAppSelector(getOffers).filter(
     (offer) => offer.city.name === activeCityName
-  );
-  const setActiveOfferMemoised = useCallback(
-    (offer: Nullable<Offer>) => setActiveOffer(offer),
-    [activeOffer]
   );
 
   const getSortedOffers = () => {
@@ -64,7 +60,7 @@ function MainPage(): JSX.Element {
                 <OffersList
                   offers={sortedOffers}
                   onActiveOfferChange={(offer: Nullable<Offer>) =>
-                    setActiveOfferMemoised(offer)
+                    setActiveOffer(offer)
                   }
                   cardClass={CardClass.Cities}
                   wrapperClassName={
