@@ -20,7 +20,10 @@ import {
   setUserData,
   updateUserFavorites,
 } from './user-process/user-process.slice';
-import { changeCityAction, updateFavoriteInfo } from './data-process/data-process.slice';
+import {
+  changeCityAction,
+  updateFavoriteInfo,
+} from './data-process/data-process.slice';
 
 export const fetchOffersAction = createAsyncThunk<
   Offer[],
@@ -177,6 +180,6 @@ export const logoutAction = createAsyncThunk<
   dropToken();
   dispatch(fetchOffersAction());
   dispatch(setUserData(null));
-  dispatch(changeCityAction(CityData[CityName.Paris]))
+  dispatch(changeCityAction(CityData[CityName.Paris]));
   dispatch(redirectToRoute(AppRoutes.Root));
 });
