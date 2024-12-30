@@ -1,14 +1,14 @@
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { getFavoriteOffers } from '../../../store/user-process/user-process.selectors';
-import { Header } from '../main-page/header';
-import OffersList from '../main-page/offers-list';
-import { AppRoutes, CardClass, CITY_INFO } from '../../../consts';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { getFavoriteOffers } from '../../store/user-process/user-process.selectors';
+import { AppRoutes, CardClass, CityInfoList } from '../../consts';
 import { Link } from 'react-router-dom';
-import { City } from '../../../types/city';
-import { changeCityAction } from '../../../store/data-process/data-process.slice';
-import { redirectToRoute } from '../../../store/actions';
-import FavoritesEmptyPage from './favorites-empty-page';
-import { LoadingScreen } from '../loading-page/loading-page';
+import { City } from '../../types/city';
+import { changeCityAction } from '../../store/data-process/data-process.slice';
+import { redirectToRoute } from '../../store/actions';
+import FavoritesPageEmpty from './favorites-page-empty';
+import { LoadingScreen } from '../../components/loading-screen';
+import Header from '../main-page/header';
+import OffersList from '../../components/offers-list';
 
 function FavoritesPage(): JSX.Element {
   const dispatch = useAppDispatch();
@@ -30,7 +30,7 @@ function FavoritesPage(): JSX.Element {
             <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">
-                {CITY_INFO.map((city) => {
+                {CityInfoList.map((city) => {
                   const cityFavorites = favorites.filter(
                     (favorite) => favorite.city.name === city.name
                   );
@@ -64,12 +64,12 @@ function FavoritesPage(): JSX.Element {
               </ul>
             </section>
           ) : (
-            <FavoritesEmptyPage />
+            <FavoritesPageEmpty />
           )}
         </div>
       </main>
       <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
+        <Link to={AppRoutes.Root}>
           <img
             className="footer__logo"
             src="img/logo.svg"
@@ -77,7 +77,7 @@ function FavoritesPage(): JSX.Element {
             width={64}
             height={33}
           />
-        </a>
+        </Link>
       </footer>
     </div>
   );

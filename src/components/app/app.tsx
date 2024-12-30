@@ -1,16 +1,16 @@
-import MainPage from '../components/pages/main-page/main-page';
-import NotFound from '../components/pages/errors/404';
+import MainPage from '../../pages/main-page/main-page';
+import NotFound from '../../pages/errors/404';
 import { Route, Routes } from 'react-router-dom';
-import { AppRoutes } from '../consts';
-import LoginPage from '../components/pages/login-page/login-page';
-import FavoritesPage from '../components/pages/favorites-page/favorites-page';
-import OfferPage from '../components/pages/offer-page/offer-page';
-import PrivateRoute from '../components/private-route';
-import { useAppSelector } from '../store/hooks';
-import { LoadingScreen } from '../components/pages/loading-page/loading-page';
-import HistoryRouter from '../components/history-route';
-import browserHistory from '../browser-history';
-import { isOffersDataStillLoading } from '../store/data-process/data-process.selectors';
+import { AppRoutes } from '../../consts';
+import LoginPage from '../../pages/login-page/login-page';
+import FavoritesPage from '../../pages/favorites-page/favorites-page';
+import OfferPage from '../../pages/offer-page/offer-page';
+import PrivateRoute from '../private-route';
+import { useAppSelector } from '../../store/hooks';
+import { LoadingScreen } from '../loading-screen';
+import HistoryRouter from '../history-router';
+import browserHistory from '../../browser-history';
+import { isOffersDataStillLoading } from '../../store/data-process/data-process.selectors';
 
 function App(): JSX.Element {
   const isDataStillLoading = useAppSelector(isOffersDataStillLoading);

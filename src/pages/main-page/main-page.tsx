@@ -1,18 +1,18 @@
 import { useState } from 'react';
-import { Map } from '../../map/map';
-import { Offer } from '../../../types/offer';
-import OffersList from './offers-list';
+import { Map } from '../../components/map/map';
+import { Offer } from '../../types/offer';
 import { Nullable } from 'vitest';
-import CitiesList from './cities-list';
-import { useAppSelector } from '../../../store/hooks';
-import { CardClass, CityData, SortingOption } from '../../../consts';
-import { Header } from './header';
+import { useAppSelector } from '../../store/hooks';
+import { CardClass, CityData, SortingOption } from '../../consts';
 import {
   getCurrentCityName,
   getOffers,
-} from '../../../store/data-process/data-process.selectors';
+} from '../../store/data-process/data-process.selectors';
 import SortingDropdown from './sorting-dropdown';
 import MainPageEmpty from './main-page-empty';
+import Header from './header';
+import CitiesList from './cities-list';
+import OffersList from '../../components/offers-list';
 
 function MainPage(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Nullable<Offer>>(null);
@@ -59,7 +59,8 @@ function MainPage(): JSX.Element {
                 <SortingDropdown onSortChange={setCurrentSort} />
                 <OffersList
                   offers={sortedOffers}
-                  onActiveOfferChange={(offer: Nullable<Offer>) => setActiveOffer(offer)}
+                  onActiveOfferChange={(offer: Nullable<Offer>) =>
+                    setActiveOffer(offer)}
                   cardClass={CardClass.Cities}
                   wrapperClassName={
                     'cities__places-list places__list tabs__content'

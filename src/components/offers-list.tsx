@@ -1,7 +1,7 @@
 import { Nullable } from 'vitest';
-import { Offer } from '../../../types/offer';
+import { CardClass } from '../consts';
+import { Offer } from '../types/offer';
 import OfferCard from './offer-card';
-import { CardClass } from '../../../consts';
 
 type OfferListProps = {
   offers: Offer[];

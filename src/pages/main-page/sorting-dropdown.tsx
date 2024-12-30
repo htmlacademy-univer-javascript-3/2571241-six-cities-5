@@ -1,18 +1,18 @@
-import { useState } from 'react';
-import { SortingOption, SortingOptions } from '../../../consts';
+import { memo, useState } from 'react';
+import { SortingOption, SortingOptionsList } from '../../consts';
 
 type SortingDropDownProps = {
   onSortChange: (selectedSort: SortingOption) => void;
 };
 
-function SortingDropdown({ onSortChange }: SortingDropDownProps): JSX.Element {
+function SortingDropdown({ onSortChange: onSortChangeAction }: SortingDropDownProps): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState(SortingOption.Popular);
 
   const handleSortChange = (sortOption: SortingOption) => {
     setIsOpen(false);
     setSelectedSort(sortOption);
-    onSortChange(sortOption);
+    onSortChangeAction(sortOption);
   };
   return (
     <form className="places__sorting" action="#" method="get">
@@ -31,7 +31,7 @@ function SortingDropdown({ onSortChange }: SortingDropDownProps): JSX.Element {
       </span>
       {isOpen && (
         <ul className="places__options places__options--custom places__options--opened">
-          {SortingOptions.map((option) => (
+          {SortingOptionsList.map((option) => (
             <li
               key={option}
               className={`places__option ${
@@ -49,4 +49,5 @@ function SortingDropdown({ onSortChange }: SortingDropDownProps): JSX.Element {
   );
 }
 
-export default SortingDropdown;
+const MemorizedSortingDropdown = memo(SortingDropdown);
+export default MemorizedSortingDropdown;

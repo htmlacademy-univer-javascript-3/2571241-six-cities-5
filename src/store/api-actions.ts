@@ -3,9 +3,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { redirectToRoute } from './actions';
 import { Offer } from '../types/offer';
 import { AppDispatch, State } from '../types/state';
-import { APIRoutes, AppRoutes } from '../consts';
+import { APIRoutes, AppRoutes, CityData, CityName } from '../consts';
 import { AuthInfo } from '../types/authInfo';
-import { dropToken, saveToken } from '../components/services/token';
+import { dropToken, saveToken } from '../services/token';
 import { UserInfo } from '../types/userInfo';
 import { SingleOffer } from '../types/single-offer';
 import { ReviewData, ReviewFromPerson } from '../types/review-data';
@@ -20,7 +20,10 @@ import {
   setUserData,
   updateUserFavorites,
 } from './user-process/user-process.slice';
-import { updateFavoriteInfo } from './data-process/data-process.slice';
+import {
+  changeCityAction,
+  updateFavoriteInfo,
+} from './data-process/data-process.slice';
 
 export const fetchOffersAction = createAsyncThunk<
   Offer[],
@@ -161,6 +164,7 @@ export const loginAction = createAsyncThunk<
   dispatch(redirectToRoute(AppRoutes.Root));
   dispatch(setUserData(data));
   dispatch(fetchFavoriteOffersAction());
+  dispatch(fetchOffersAction());
 });
 
 export const logoutAction = createAsyncThunk<
@@ -171,7 +175,11 @@ export const logoutAction = createAsyncThunk<
     state: State;
     extra: AxiosInstance;
   }
->('user/logout', async (_arg, { extra: api }) => {
+>('user/logout', async (_arg, { dispatch, extra: api }) => {
   await api.delete(APIRoutes.Logout);
   dropToken();
+  dispatch(fetchOffersAction());
+  dispatch(setUserData(null));
+  dispatch(changeCityAction(CityData[CityName.Paris]));
+  dispatch(redirectToRoute(AppRoutes.Root));
 });

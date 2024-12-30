@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom';
-import { AppRoutes } from '../../../consts';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { logoutAction } from '../../../store/api-actions';
+import { AppRoutes } from '../../consts';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { logoutAction } from '../../store/api-actions';
 import {
   getAuthCheckedStatus,
   getFavoriteOffersCount,
   getUserData,
-} from '../../../store/user-process/user-process.selectors';
+} from '../../store/user-process/user-process.selectors';
+import { memo } from 'react';
 
-export function Header(): JSX.Element {
+function Header(): JSX.Element {
   const favoritesCount = useAppSelector(getFavoriteOffersCount);
   const isAuthorized = useAppSelector(getAuthCheckedStatus);
   const userData = useAppSelector(getUserData);
@@ -72,3 +73,6 @@ export function Header(): JSX.Element {
     </header>
   );
 }
+
+const MemorizedHeader = memo(Header);
+export default MemorizedHeader;

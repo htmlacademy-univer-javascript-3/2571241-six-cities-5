@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
-import { useAppDispatch } from '../../../store/hooks';
-import { loginAction } from '../../../store/api-actions';
+import { useAppDispatch } from '../../store/hooks';
+import { loginAction } from '../../store/api-actions';
 
 interface FormData {
   email: string;
@@ -14,7 +14,7 @@ export function LogInForm(): JSX.Element {
     password: '',
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -22,7 +22,7 @@ export function LogInForm(): JSX.Element {
     }));
   };
 
-  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+  const onSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (formData.email.length > 0 && formData.password.length > 0) {
       dispatch(
@@ -35,7 +35,7 @@ export function LogInForm(): JSX.Element {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="login__form form">
+    <form onSubmit={onSubmit} className="login__form form">
       <div className="login__input-wrapper form__input-wrapper">
         <label className="visually-hidden">E-mail</label>
         <input
@@ -43,7 +43,7 @@ export function LogInForm(): JSX.Element {
           type="email"
           name="email"
           value={formData.email}
-          onChange={handleChange}
+          onChange={onChange}
           placeholder="Email"
           required
         />
@@ -55,7 +55,7 @@ export function LogInForm(): JSX.Element {
           type="password"
           name="password"
           value={formData.password}
-          onChange={handleChange}
+          onChange={onChange}
           placeholder="Password"
           required
         />

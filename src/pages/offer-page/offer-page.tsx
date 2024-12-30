@@ -1,28 +1,28 @@
 import { useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   getNearbyOffers,
   getReviews,
   getSingleOffer,
   getSingleOfferDataLoadingStatus,
-} from '../../../store/single-offer-data-process/single-offer-data-process.selectors';
-import { Header } from '../main-page/header';
+} from '../../store/single-offer-data-process/single-offer-data-process.selectors';
 import CommentForm from './comment-form';
 import { ReviewList } from './review-list';
 import { useEffect } from 'react';
 import {
   editFavoritesAction,
   fetchSingleOfferAction,
-} from '../../../store/api-actions';
+} from '../../store/api-actions';
 import { OfferGallery } from './offer-gallery';
-import { LoadingScreen } from '../loading-page/loading-page';
-import { getAuthCheckedStatus } from '../../../store/user-process/user-process.selectors';
-import { Map } from '../../map/map';
-import OffersList from '../main-page/offers-list';
-import { AppRoutes, CardClass } from '../../../consts';
+import { LoadingScreen } from '../../components/loading-screen';
+import { getAuthCheckedStatus } from '../../store/user-process/user-process.selectors';
+import { Map } from '../../components/map/map';
+import { AppRoutes, CardClass, RoomTypes } from '../../consts';
 import NotFound from '../errors/404';
-import { redirectToRoute } from '../../../store/actions';
-import { updateSingleOfferFavoritesStatus } from '../../../store/single-offer-data-process/single-offer-data-process.slice';
+import { redirectToRoute } from '../../store/actions';
+import { updateSingleOfferFavoritesStatus } from '../../store/single-offer-data-process/single-offer-data-process.slice';
+import Header from '../main-page/header';
+import OffersList from '../../components/offers-list';
 
 function OfferPage(): JSX.Element {
   const offerId = useParams<{ id: string }>().id as string;
@@ -49,7 +49,7 @@ function OfferPage(): JSX.Element {
     id: currentOffer.id,
   };
 
-  const handleClick = (event: React.MouseEvent) => {
+  const handleBookmarkClick = (event: React.MouseEvent) => {
     event.preventDefault();
     if (isAuthorized) {
       dispatch(
@@ -84,7 +84,7 @@ function OfferPage(): JSX.Element {
                     currentOffer.isFavorite ? '--active' : ''
                   } button`}
                   type="button"
-                  onClick={handleClick}
+                  onClick={handleBookmarkClick}
                 >
                   <svg className="offer__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
@@ -112,8 +112,7 @@ function OfferPage(): JSX.Element {
               </div>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
-                  {String(currentOffer.type).charAt(0).toUpperCase() +
-                    String(currentOffer.type).slice(1)}
+                  {RoomTypes[currentOffer.type]}
                 </li>
                 <li className="offer__feature offer__feature--bedrooms">
                   {`${currentOffer.bedrooms} Bedroom${

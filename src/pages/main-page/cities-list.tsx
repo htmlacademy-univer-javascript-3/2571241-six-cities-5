@@ -1,24 +1,29 @@
-import { CITY_INFO, CityData } from '../../../consts';
-import { getCurrentCityName } from '../../../store/data-process/data-process.selectors';
-import { changeCityAction } from '../../../store/data-process/data-process.slice';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { City } from '../../../types/city';
+import { memo, useCallback } from 'react';
+import { CityInfoList, CityData } from '../../consts';
+import { getCurrentCityName } from '../../store/data-process/data-process.selectors';
+import { changeCityAction } from '../../store/data-process/data-process.slice';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { City } from '../../types/city';
 
 function CitiesList(): JSX.Element {
   const dispatch = useAppDispatch();
   const currentCityName = useAppSelector(getCurrentCityName);
+  const handleCityClick = useCallback(
+    (city: City) => dispatch(changeCityAction(city)),
+    [dispatch]
+  );
   return (
     <div className="tabs">
       <section className="locations container">
         <ul className="locations__list tabs__list">
-          {CITY_INFO.map((city: City) => (
+          {CityInfoList.map((city: City) => (
             <li key={city.name} className="locations__item">
               <a
                 className={`locations__item-link tabs__item${
                   currentCityName === city.name ? ' tabs__item--active' : ''
                 }`}
                 onClick={() => {
-                  dispatch(changeCityAction(CityData[city.name]));
+                  handleCityClick(CityData[city.name]);
                 }}
               >
                 <span>{city.name}</span>
@@ -31,4 +36,5 @@ function CitiesList(): JSX.Element {
   );
 }
 
-export default CitiesList;
+const MemorizedCitiesList = memo(CitiesList);
+export default MemorizedCitiesList;

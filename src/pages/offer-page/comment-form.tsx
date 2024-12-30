@@ -1,11 +1,11 @@
 import { FormEvent, useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { setFormAcceptedStatus } from '../../../store/single-offer-data-process/single-offer-data-process.slice';
-import { postReviewAction } from '../../../store/api-actions';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { setFormAcceptedStatus } from '../../store/single-offer-data-process/single-offer-data-process.slice';
+import { postReviewAction } from '../../store/api-actions';
 import {
   getSingleOfferFormAcceptedStatus,
   getSingleOfferReviewPostingStatus,
-} from '../../../store/single-offer-data-process/single-offer-data-process.selectors';
+} from '../../store/single-offer-data-process/single-offer-data-process.selectors';
 
 type CommentFormProps = {
   currentOfferId: string;

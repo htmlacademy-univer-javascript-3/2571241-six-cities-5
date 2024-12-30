@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SingleOffer } from '../../types/single-offer';
 import { StoreNameSpace } from '../../consts';
-import { SingleOfferProcess } from '../../types/state';
+import { SingleOfferProcess as SingleOfferDataProcess } from '../../types/state';
 import { Offer } from '../../types/offer';
 import { ReviewFromPerson } from '../../types/review-data';
 import {
@@ -10,7 +10,7 @@ import {
   fetchSingleOfferAction,
 } from '../api-actions';
 
-const initialState: SingleOfferProcess = {
+const initialState: SingleOfferDataProcess = {
   singleOffer: null,
   nearbyOffers: [],
   reviews: [],
@@ -19,7 +19,7 @@ const initialState: SingleOfferProcess = {
   isFormAccepted: false,
 };
 
-export const singleOfferData = createSlice({
+export const singleOfferDataProcess = createSlice({
   name: StoreNameSpace.SingleOffer,
   initialState,
   reducers: {
@@ -109,4 +109,4 @@ export const {
   setFormAcceptedStatus,
   updateFavoritesNearbyInfo,
   updateSingleOfferFavoritesStatus,
-} = singleOfferData.actions;
+} = singleOfferDataProcess.actions;
