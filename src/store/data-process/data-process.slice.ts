@@ -11,7 +11,7 @@ export const initialState: DataProcess = {
   isOffersDataLoading: false,
 };
 
-export const offersData = createSlice({
+export const dataProcess = createSlice({
   name: StoreNameSpace.Data,
   initialState,
   reducers: {
@@ -44,4 +44,4 @@ export const offersData = createSlice({
   },
 });
 
-export const { changeCityAction, updateFavoriteInfo } = offersData.actions;
+export const { changeCityAction, updateFavoriteInfo } = dataProcess.actions;

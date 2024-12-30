@@ -7,8 +7,8 @@ import FavoritesPage from '../../pages/favorites-page/favorites-page';
 import OfferPage from '../../pages/offer-page/offer-page';
 import PrivateRoute from '../private-route';
 import { useAppSelector } from '../../store/hooks';
-import { LoadingScreen } from '../../pages/loading-page/loading-page';
-import HistoryRouter from '../history-route';
+import { LoadingScreen } from '../loading-screen';
+import HistoryRouter from '../history-router';
 import browserHistory from '../../browser-history';
 import { isOffersDataStillLoading } from '../../store/data-process/data-process.selectors';
 

@@ -14,7 +14,7 @@ import {
   fetchSingleOfferAction,
 } from '../../store/api-actions';
 import { OfferGallery } from './offer-gallery';
-import { LoadingScreen } from '../loading-page/loading-page';
+import { LoadingScreen } from '../../components/loading-screen';
 import { getAuthCheckedStatus } from '../../store/user-process/user-process.selectors';
 import { Map } from '../../components/map/map';
 import { AppRoutes, CardClass, ROOM_TYPES } from '../../consts';

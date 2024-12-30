@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { City } from '../../types/city';
 import { changeCityAction } from '../../store/data-process/data-process.slice';
 import { redirectToRoute } from '../../store/actions';
-import FavoritesEmptyPage from './favorites-empty-page';
-import { LoadingScreen } from '../loading-page/loading-page';
+import FavoritesPageEmpty from './favorites-page-empty';
+import { LoadingScreen } from '../../components/loading-screen';
 import Header from '../main-page/header';
 import OffersList from '../../components/offers-list';
 
@@ -64,7 +64,7 @@ function FavoritesPage(): JSX.Element {
               </ul>
             </section>
           ) : (
-            <FavoritesEmptyPage />
+            <FavoritesPageEmpty />
           )}
         </div>
       </main>
