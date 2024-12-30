@@ -18,7 +18,7 @@ import { LoadingScreen } from '../loading-page/loading-page';
 import { getAuthCheckedStatus } from '../../../store/user-process/user-process.selectors';
 import { Map } from '../../map/map';
 import OffersList from '../main-page/offers-list';
-import { AppRoutes, CardClass } from '../../../consts';
+import { AppRoutes, CardClass, ROOM_TYPES } from '../../../consts';
 import NotFound from '../errors/404';
 import { redirectToRoute } from '../../../store/actions';
 import { updateSingleOfferFavoritesStatus } from '../../../store/single-offer-data-process/single-offer-data-process.slice';
@@ -112,8 +112,7 @@ function OfferPage(): JSX.Element {
               </div>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
-                  {String(currentOffer.type).charAt(0).toUpperCase() +
-                    String(currentOffer.type).slice(1)}
+                  {ROOM_TYPES[currentOffer.type]}
                 </li>
                 <li className="offer__feature offer__feature--bedrooms">
                   {`${currentOffer.bedrooms} Bedroom${

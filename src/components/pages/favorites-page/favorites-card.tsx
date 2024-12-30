@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../../../types/offer';
+import { AppRoutes } from '../../../consts';
 function FavoritesCard(props: { offer: Offer }): JSX.Element {
   const { offer } = props;
   const BEST_RATING = 5;
@@ -11,16 +12,15 @@ function FavoritesCard(props: { offer: Offer }): JSX.Element {
         </div>
       )}
       <div className="favorites__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={AppRoutes.Root}>
           <img
             className="place-card__image"
             src={offer.previewImage}
             width="150"
             height="110"
             alt="Place image"
-          >
-          </img>
-        </a>
+          ></img>
+        </Link>
       </div>
       <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
@@ -42,8 +42,7 @@ function FavoritesCard(props: { offer: Offer }): JSX.Element {
           <div className="place-card__stars rating__stars">
             <span
               style={{ width: `${(offer.rating / BEST_RATING) * 100}%` }}
-            >
-            </span>
+            ></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>

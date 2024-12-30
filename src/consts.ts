@@ -30,6 +30,13 @@ export enum CityName {
   Dusseldorf = 'Dusseldorf',
 }
 
+export const ROOM_TYPES = {
+  ['apartment']: 'Apartment',
+  ['room']: 'Room',
+  ['house']: 'House',
+  ['hotel']: 'Hotel',
+};
+
 export const CITY_INFO: City[] = [
   {
     name: CityName.Paris,
