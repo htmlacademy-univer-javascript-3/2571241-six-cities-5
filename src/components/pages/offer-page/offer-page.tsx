@@ -6,7 +6,6 @@ import {
   getSingleOffer,
   getSingleOfferDataLoadingStatus,
 } from '../../../store/single-offer-data-process/single-offer-data-process.selectors';
-import { Header } from '../main-page/header';
 import CommentForm from './comment-form';
 import { ReviewList } from './review-list';
 import { useEffect } from 'react';
@@ -23,6 +22,7 @@ import { AppRoutes, CardClass } from '../../../consts';
 import NotFound from '../errors/404';
 import { redirectToRoute } from '../../../store/actions';
 import { updateSingleOfferFavoritesStatus } from '../../../store/single-offer-data-process/single-offer-data-process.slice';
+import Header from '../main-page/header';
 
 function OfferPage(): JSX.Element {
   const offerId = useParams<{ id: string }>().id as string;

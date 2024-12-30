@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { SortingOption, SortingOptions } from '../../../consts';
 
 type SortingDropDownProps = {
@@ -49,4 +49,4 @@ function SortingDropdown({ onSortChange }: SortingDropDownProps): JSX.Element {
   );
 }
 
-export default SortingDropdown;
+export default memo(SortingDropdown);

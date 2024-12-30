@@ -7,8 +7,9 @@ import {
   getFavoriteOffersCount,
   getUserData,
 } from '../../../store/user-process/user-process.selectors';
+import { memo } from 'react';
 
-export function Header(): JSX.Element {
+function Header(): JSX.Element {
   const favoritesCount = useAppSelector(getFavoriteOffersCount);
   const isAuthorized = useAppSelector(getAuthCheckedStatus);
   const userData = useAppSelector(getUserData);
@@ -72,3 +73,6 @@ export function Header(): JSX.Element {
     </header>
   );
 }
+
+
+export default memo(Header);

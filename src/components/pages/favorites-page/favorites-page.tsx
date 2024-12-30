@@ -1,6 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { getFavoriteOffers } from '../../../store/user-process/user-process.selectors';
-import { Header } from '../main-page/header';
 import OffersList from '../main-page/offers-list';
 import { AppRoutes, CardClass, CITY_INFO } from '../../../consts';
 import { Link } from 'react-router-dom';
@@ -9,6 +8,7 @@ import { changeCityAction } from '../../../store/data-process/data-process.slice
 import { redirectToRoute } from '../../../store/actions';
 import FavoritesEmptyPage from './favorites-empty-page';
 import { LoadingScreen } from '../loading-page/loading-page';
+import Header from '../main-page/header';
 
 function FavoritesPage(): JSX.Element {
   const dispatch = useAppDispatch();
