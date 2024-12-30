@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Map } from '../../components/map/map';
 import { Offer } from '../../types/offer';
-import OffersList from './offers-list';
 import { Nullable } from 'vitest';
 import { useAppSelector } from '../../store/hooks';
 import { CardClass, CITY_DATA, SortingOption } from '../../consts';
@@ -13,6 +12,7 @@ import SortingDropdown from './sorting-dropdown';
 import MainPageEmpty from './main-page-empty';
 import Header from './header';
 import CitiesList from './cities-list';
+import OffersList from '../../components/offers-list';
 
 function MainPage(): JSX.Element {
   const [activeOffer, setActiveOffer] = useState<Nullable<Offer>>(null);

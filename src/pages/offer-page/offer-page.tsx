@@ -17,12 +17,12 @@ import { OfferGallery } from './offer-gallery';
 import { LoadingScreen } from '../loading-page/loading-page';
 import { getAuthCheckedStatus } from '../../store/user-process/user-process.selectors';
 import { Map } from '../../components/map/map';
-import OffersList from '../main-page/offers-list';
 import { AppRoutes, CardClass, ROOM_TYPES } from '../../consts';
 import NotFound from '../errors/404';
 import { redirectToRoute } from '../../store/actions';
 import { updateSingleOfferFavoritesStatus } from '../../store/single-offer-data-process/single-offer-data-process.slice';
 import Header from '../main-page/header';
+import OffersList from '../../components/offers-list';
 
 function OfferPage(): JSX.Element {
   const offerId = useParams<{ id: string }>().id as string;

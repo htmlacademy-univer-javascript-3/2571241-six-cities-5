@@ -5,7 +5,7 @@ import { Offer } from '../types/offer';
 import { AppDispatch, State } from '../types/state';
 import { APIRoutes, AppRoutes } from '../consts';
 import { AuthInfo } from '../types/authInfo';
-import { dropToken, saveToken } from '../components/services/token';
+import { dropToken, saveToken } from '../services/token';
 import { UserInfo } from '../types/userInfo';
 import { SingleOffer } from '../types/single-offer';
 import { ReviewData, ReviewFromPerson } from '../types/review-data';
