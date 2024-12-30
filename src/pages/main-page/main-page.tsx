@@ -3,7 +3,7 @@ import { Map } from '../../components/map/map';
 import { Offer } from '../../types/offer';
 import { Nullable } from 'vitest';
 import { useAppSelector } from '../../store/hooks';
-import { CardClass, CITY_DATA, SortingOption } from '../../consts';
+import { CardClass, CityData, SortingOption } from '../../consts';
 import {
   getCurrentCityName,
   getOffers,
@@ -69,7 +69,7 @@ function MainPage(): JSX.Element {
               </section>
               <div className="cities__right-section">
                 <Map
-                  city={CITY_DATA[activeCityName]}
+                  city={CityData[activeCityName]}
                   points={sortedOffers.map((x) => ({
                     location: x.location,
                     id: x.id,

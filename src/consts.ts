@@ -90,7 +90,7 @@ export const CityInfoList: City[] = [
   },
 ];
 
-export const CITY_DATA = {
+export const CityData = {
   [CityName.Paris]: {
     name: CityName.Paris,
     location: {

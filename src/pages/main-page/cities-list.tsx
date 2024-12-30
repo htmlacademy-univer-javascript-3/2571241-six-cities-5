@@ -1,5 +1,5 @@
 import { memo, useCallback } from 'react';
-import { CityInfoList, CITY_DATA } from '../../consts';
+import { CityInfoList, CityData } from '../../consts';
 import { getCurrentCityName } from '../../store/data-process/data-process.selectors';
 import { changeCityAction } from '../../store/data-process/data-process.slice';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
@@ -23,7 +23,7 @@ function CitiesList(): JSX.Element {
                   currentCityName === city.name ? ' tabs__item--active' : ''
                 }`}
                 onClick={() => {
-                  handleCityClick(CITY_DATA[city.name]);
+                  handleCityClick(CityData[city.name]);
                 }}
               >
                 <span>{city.name}</span>

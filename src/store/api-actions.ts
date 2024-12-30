@@ -3,7 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { redirectToRoute } from './actions';
 import { Offer } from '../types/offer';
 import { AppDispatch, State } from '../types/state';
-import { APIRoutes, AppRoutes } from '../consts';
+import { APIRoutes, AppRoutes, CityData, CityName } from '../consts';
 import { AuthInfo } from '../types/authInfo';
 import { dropToken, saveToken } from '../services/token';
 import { UserInfo } from '../types/userInfo';
@@ -20,7 +20,7 @@ import {
   setUserData,
   updateUserFavorites,
 } from './user-process/user-process.slice';
-import { updateFavoriteInfo } from './data-process/data-process.slice';
+import { changeCityAction, updateFavoriteInfo } from './data-process/data-process.slice';
 
 export const fetchOffersAction = createAsyncThunk<
   Offer[],
@@ -177,5 +177,6 @@ export const logoutAction = createAsyncThunk<
   dropToken();
   dispatch(fetchOffersAction());
   dispatch(setUserData(null));
+  dispatch(changeCityAction(CityData[CityName.Paris]))
   dispatch(redirectToRoute(AppRoutes.Root));
 });
