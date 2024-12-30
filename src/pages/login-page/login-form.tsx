@@ -1,6 +1,6 @@
 import { FormEvent, useState } from 'react';
-import { useAppDispatch } from '../../../store/hooks';
-import { loginAction } from '../../../store/api-actions';
+import { useAppDispatch } from '../../store/hooks';
+import { loginAction } from '../../store/api-actions';
 
 interface FormData {
   email: string;

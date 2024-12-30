@@ -1,5 +1,5 @@
 import { memo, useState } from 'react';
-import { SortingOption, SortingOptions } from '../../../consts';
+import { SortingOption, SortingOptionsList } from '../../consts';
 
 type SortingDropDownProps = {
   onSortChange: (selectedSort: SortingOption) => void;
@@ -31,7 +31,7 @@ function SortingDropdown({ onSortChange }: SortingDropDownProps): JSX.Element {
       </span>
       {isOpen && (
         <ul className="places__options places__options--custom places__options--opened">
-          {SortingOptions.map((option) => (
+          {SortingOptionsList.map((option) => (
             <li
               key={option}
               className={`places__option ${

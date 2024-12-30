@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Offer } from '../../../types/offer';
-import { AppRoutes, CardClass, ROOM_TYPES } from '../../../consts';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { getAuthCheckedStatus } from '../../../store/user-process/user-process.selectors';
-import { redirectToRoute } from '../../../store/actions';
-import { editFavoritesAction } from '../../../store/api-actions';
+import { Offer } from '../../types/offer';
+import { AppRoutes, CardClass, ROOM_TYPES } from '../../consts';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { getAuthCheckedStatus } from '../../store/user-process/user-process.selectors';
+import { redirectToRoute } from '../../store/actions';
+import { editFavoritesAction } from '../../store/api-actions';
 
 type OfferCardProps = {
   offer: Offer;

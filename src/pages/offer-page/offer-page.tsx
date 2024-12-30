@@ -1,27 +1,27 @@
 import { useParams } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   getNearbyOffers,
   getReviews,
   getSingleOffer,
   getSingleOfferDataLoadingStatus,
-} from '../../../store/single-offer-data-process/single-offer-data-process.selectors';
+} from '../../store/single-offer-data-process/single-offer-data-process.selectors';
 import CommentForm from './comment-form';
 import { ReviewList } from './review-list';
 import { useEffect } from 'react';
 import {
   editFavoritesAction,
   fetchSingleOfferAction,
-} from '../../../store/api-actions';
+} from '../../store/api-actions';
 import { OfferGallery } from './offer-gallery';
 import { LoadingScreen } from '../loading-page/loading-page';
-import { getAuthCheckedStatus } from '../../../store/user-process/user-process.selectors';
-import { Map } from '../../map/map';
+import { getAuthCheckedStatus } from '../../store/user-process/user-process.selectors';
+import { Map } from '../../components/map/map';
 import OffersList from '../main-page/offers-list';
-import { AppRoutes, CardClass, ROOM_TYPES } from '../../../consts';
+import { AppRoutes, CardClass, ROOM_TYPES } from '../../consts';
 import NotFound from '../errors/404';
-import { redirectToRoute } from '../../../store/actions';
-import { updateSingleOfferFavoritesStatus } from '../../../store/single-offer-data-process/single-offer-data-process.slice';
+import { redirectToRoute } from '../../store/actions';
+import { updateSingleOfferFavoritesStatus } from '../../store/single-offer-data-process/single-offer-data-process.slice';
 import Header from '../main-page/header';
 
 function OfferPage(): JSX.Element {

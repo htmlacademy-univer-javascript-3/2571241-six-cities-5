@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { Map } from '../../map/map';
-import { Offer } from '../../../types/offer';
+import { Map } from '../../components/map/map';
+import { Offer } from '../../types/offer';
 import OffersList from './offers-list';
 import { Nullable } from 'vitest';
-import { useAppSelector } from '../../../store/hooks';
-import { CardClass, CityData, SortingOption } from '../../../consts';
+import { useAppSelector } from '../../store/hooks';
+import { CardClass, CITY_DATA, SortingOption } from '../../consts';
 import {
   getCurrentCityName,
   getOffers,
-} from '../../../store/data-process/data-process.selectors';
+} from '../../store/data-process/data-process.selectors';
 import SortingDropdown from './sorting-dropdown';
 import MainPageEmpty from './main-page-empty';
 import Header from './header';
@@ -70,7 +70,7 @@ function MainPage(): JSX.Element {
               </section>
               <div className="cities__right-section">
                 <Map
-                  city={CityData[activeCityName]}
+                  city={CITY_DATA[activeCityName]}
                   points={sortedOffers.map((x) => ({
                     location: x.location,
                     id: x.id,

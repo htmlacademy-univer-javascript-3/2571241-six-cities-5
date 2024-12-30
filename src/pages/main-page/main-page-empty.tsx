@@ -1,5 +1,5 @@
-import { getCurrentCityName } from '../../../store/data-process/data-process.selectors';
-import { useAppSelector } from '../../../store/hooks';
+import { getCurrentCityName } from '../../store/data-process/data-process.selectors';
+import { useAppSelector } from '../../store/hooks';
 
 function MainPageEmpty(): JSX.Element {
   const activeCityName = useAppSelector(getCurrentCityName);

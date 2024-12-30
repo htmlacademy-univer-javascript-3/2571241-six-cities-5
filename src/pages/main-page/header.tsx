@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { AppRoutes } from '../../../consts';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { logoutAction } from '../../../store/api-actions';
+import { AppRoutes } from '../../consts';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { logoutAction } from '../../store/api-actions';
 import {
   getAuthCheckedStatus,
   getFavoriteOffersCount,
   getUserData,
-} from '../../../store/user-process/user-process.selectors';
+} from '../../store/user-process/user-process.selectors';
 import { memo } from 'react';
 
 function Header(): JSX.Element {

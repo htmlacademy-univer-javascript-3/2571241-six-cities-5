@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { LogInForm } from './login-form';
-import { AppRoutes } from '../../../consts';
+import { AppRoutes } from '../../consts';
 import { LocationItem } from './location-item';
 
 function LoginPage(): JSX.Element {

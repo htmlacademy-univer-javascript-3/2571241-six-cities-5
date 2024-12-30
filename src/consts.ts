@@ -7,6 +7,8 @@ export enum AppRoutes {
   Offer = '/offer/:id',
 }
 
+export const BEST_RATING = 5;
+
 export enum APIRoutes {
   Offers = '/offers',
   Favorites = '/favorite',
@@ -37,7 +39,7 @@ export const ROOM_TYPES = {
   ['hotel']: 'Hotel',
 };
 
-export const CITY_INFO: City[] = [
+export const CityInfoList: City[] = [
   {
     name: CityName.Paris,
     location: {
@@ -88,7 +90,7 @@ export const CITY_INFO: City[] = [
   },
 ];
 
-export const CityData = {
+export const CITY_DATA = {
   [CityName.Paris]: {
     name: CityName.Paris,
     location: {
@@ -158,7 +160,7 @@ export enum SortingOption {
   TopRatedFirst = 'Top rated first',
 }
 
-export const SortingOptions = [
+export const SortingOptionsList = [
   SortingOption.Popular,
   SortingOption.PriceHighToLow,
   SortingOption.PriceLowToHigh,

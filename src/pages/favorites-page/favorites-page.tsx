@@ -1,11 +1,11 @@
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { getFavoriteOffers } from '../../../store/user-process/user-process.selectors';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { getFavoriteOffers } from '../../store/user-process/user-process.selectors';
 import OffersList from '../main-page/offers-list';
-import { AppRoutes, CardClass, CITY_INFO } from '../../../consts';
+import { AppRoutes, CardClass, CityInfoList } from '../../consts';
 import { Link } from 'react-router-dom';
-import { City } from '../../../types/city';
-import { changeCityAction } from '../../../store/data-process/data-process.slice';
-import { redirectToRoute } from '../../../store/actions';
+import { City } from '../../types/city';
+import { changeCityAction } from '../../store/data-process/data-process.slice';
+import { redirectToRoute } from '../../store/actions';
 import FavoritesEmptyPage from './favorites-empty-page';
 import { LoadingScreen } from '../loading-page/loading-page';
 import Header from '../main-page/header';
@@ -30,7 +30,7 @@ function FavoritesPage(): JSX.Element {
             <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">
-                {CITY_INFO.map((city) => {
+                {CityInfoList.map((city) => {
                   const cityFavorites = favorites.filter(
                     (favorite) => favorite.city.name === city.name
                   );

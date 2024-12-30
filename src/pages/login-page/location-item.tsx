@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { AppRoutes, CITY_INFO } from '../../../consts';
-import { changeCityAction } from '../../../store/data-process/data-process.slice';
-import { useAppDispatch } from '../../../store/hooks';
-import { redirectToRoute } from '../../../store/actions';
+import { AppRoutes, CityInfoList } from '../../consts';
+import { changeCityAction } from '../../store/data-process/data-process.slice';
+import { useAppDispatch } from '../../store/hooks';
+import { redirectToRoute } from '../../store/actions';
 
 export function LocationItem(): JSX.Element {
-  const randomCityIndex = Math.floor(Math.random() * CITY_INFO.length);
-  const randomCity = CITY_INFO[randomCityIndex];
+  const randomCityIndex = Math.floor(Math.random() * CityInfoList.length);
+  const randomCity = CityInfoList[randomCityIndex];
   const dispatch = useAppDispatch();
   const handleOnCityClick = () => {
     dispatch(changeCityAction(randomCity));
