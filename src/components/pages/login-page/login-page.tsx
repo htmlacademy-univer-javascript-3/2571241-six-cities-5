@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { LogInForm } from './login-form';
 import { AppRoutes } from '../../../consts';
+import { LocationItem } from './location-item';
 
 function LoginPage(): JSX.Element {
   return (
@@ -28,13 +29,7 @@ function LoginPage(): JSX.Element {
             <h1 className="login__title">Sign in</h1>
             <LogInForm />
           </section>
-          <section className="locations locations--login locations--current">
-            <div className="locations__item">
-              <a className="locations__item-link" href="#">
-                <span>Amsterdam</span>
-              </a>
-            </div>
-          </section>
+          <LocationItem />
         </div>
       </main>
     </div>
