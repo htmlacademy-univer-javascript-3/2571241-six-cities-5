@@ -17,7 +17,7 @@ import { OfferGallery } from './offer-gallery';
 import { LoadingScreen } from '../../components/loading-screen';
 import { getAuthCheckedStatus } from '../../store/user-process/user-process.selectors';
 import { Map } from '../../components/map/map';
-import { AppRoutes, CardClass, ROOM_TYPES } from '../../consts';
+import { AppRoutes, CardClass, RoomTypes } from '../../consts';
 import NotFound from '../errors/404';
 import { redirectToRoute } from '../../store/actions';
 import { updateSingleOfferFavoritesStatus } from '../../store/single-offer-data-process/single-offer-data-process.slice';
@@ -49,7 +49,7 @@ function OfferPage(): JSX.Element {
     id: currentOffer.id,
   };
 
-  const handleClick = (event: React.MouseEvent) => {
+  const handleBookmarkClick = (event: React.MouseEvent) => {
     event.preventDefault();
     if (isAuthorized) {
       dispatch(
@@ -84,7 +84,7 @@ function OfferPage(): JSX.Element {
                     currentOffer.isFavorite ? '--active' : ''
                   } button`}
                   type="button"
-                  onClick={handleClick}
+                  onClick={handleBookmarkClick}
                 >
                   <svg className="offer__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
@@ -112,7 +112,7 @@ function OfferPage(): JSX.Element {
               </div>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
-                  {ROOM_TYPES[currentOffer.type]}
+                  {RoomTypes[currentOffer.type]}
                 </li>
                 <li className="offer__feature offer__feature--bedrooms">
                   {`${currentOffer.bedrooms} Bedroom${

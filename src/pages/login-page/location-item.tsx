@@ -8,7 +8,7 @@ export function LocationItem(): JSX.Element {
   const randomCityIndex = Math.floor(Math.random() * CityInfoList.length);
   const randomCity = CityInfoList[randomCityIndex];
   const dispatch = useAppDispatch();
-  const handleOnCityClick = () => {
+  const handleCityClick = () => {
     dispatch(changeCityAction(randomCity));
     dispatch(redirectToRoute(AppRoutes.Root));
   };
@@ -18,7 +18,7 @@ export function LocationItem(): JSX.Element {
         <Link
           className="locations__item-link"
           to={AppRoutes.Root}
-          onClick={handleOnCityClick}
+          onClick={handleCityClick}
         >
           <span>{randomCity.name}</span>
         </Link>

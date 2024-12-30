@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Offer } from '../types/offer';
-import { AppRoutes, CardClass, ROOM_TYPES } from '../consts';
+import { AppRoutes, BEST_RATING, CardClass, RoomTypes } from '../consts';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { getAuthCheckedStatus } from '../store/user-process/user-process.selectors';
 import { redirectToRoute } from '../store/actions';
@@ -12,7 +12,6 @@ type OfferCardProps = {
 };
 
 function OfferCard({ offer, cardClass }: OfferCardProps): JSX.Element {
-  const highestRating = 5;
   const isAuth = useAppSelector(getAuthCheckedStatus);
   const dispatch = useAppDispatch();
   const handleBookmarkClick = () => {
@@ -76,7 +75,7 @@ function OfferCard({ offer, cardClass }: OfferCardProps): JSX.Element {
           <div className="place-card__stars rating__stars">
             <span
               style={{
-                width: `${(offer.rating / highestRating) * 100}%`,
+                width: `${(offer.rating / BEST_RATING) * 100}%`,
               }}
             />
             <span className="visually-hidden">Rating</span>
@@ -85,7 +84,7 @@ function OfferCard({ offer, cardClass }: OfferCardProps): JSX.Element {
         <h2 className="place-card__name">
           <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>
-        <p className="place-card__type">{ROOM_TYPES[offer.type]}</p>
+        <p className="place-card__type">{RoomTypes[offer.type]}</p>
       </div>
     </article>
   );

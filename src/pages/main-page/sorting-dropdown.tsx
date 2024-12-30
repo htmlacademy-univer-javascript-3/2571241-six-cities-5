@@ -5,14 +5,14 @@ type SortingDropDownProps = {
   onSortChange: (selectedSort: SortingOption) => void;
 };
 
-function SortingDropdown({ onSortChange }: SortingDropDownProps): JSX.Element {
+function SortingDropdown({ onSortChange: onSortChangeAction }: SortingDropDownProps): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedSort, setSelectedSort] = useState(SortingOption.Popular);
 
   const handleSortChange = (sortOption: SortingOption) => {
     setIsOpen(false);
     setSelectedSort(sortOption);
-    onSortChange(sortOption);
+    onSortChangeAction(sortOption);
   };
   return (
     <form className="places__sorting" action="#" method="get">

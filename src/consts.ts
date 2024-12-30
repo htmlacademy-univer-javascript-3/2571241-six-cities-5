@@ -32,7 +32,7 @@ export enum CityName {
   Dusseldorf = 'Dusseldorf',
 }
 
-export const ROOM_TYPES = {
+export const RoomTypes = {
   ['apartment']: 'Apartment',
   ['room']: 'Room',
   ['house']: 'House',
