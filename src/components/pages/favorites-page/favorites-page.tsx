@@ -69,7 +69,7 @@ function FavoritesPage(): JSX.Element {
         </div>
       </main>
       <footer className="footer container">
-        <a className="footer__logo-link" href="main.html">
+        <Link to={AppRoutes.Root}>
           <img
             className="footer__logo"
             src="img/logo.svg"
@@ -77,7 +77,7 @@ function FavoritesPage(): JSX.Element {
             width={64}
             height={33}
           />
-        </a>
+        </Link>
       </footer>
     </div>
   );

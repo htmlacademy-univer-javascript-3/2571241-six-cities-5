@@ -23,7 +23,10 @@ function MainPage(): JSX.Element {
   const offers = useAppSelector(getOffers).filter(
     (offer) => offer.city.name === activeCityName
   );
-  const setActiveOfferMemoised = useCallback((offer: Nullable<Offer>) => setActiveOffer(offer), [activeOffer])
+  const setActiveOfferMemoised = useCallback(
+    (offer: Nullable<Offer>) => setActiveOffer(offer),
+    [activeOffer]
+  );
 
   const getSortedOffers = () => {
     const sorted = [...offers];
@@ -60,7 +63,9 @@ function MainPage(): JSX.Element {
                 <SortingDropdown onSortChange={setCurrentSort} />
                 <OffersList
                   offers={sortedOffers}
-                  onActiveOfferChange={(offer: Nullable<Offer>) => setActiveOfferMemoised(offer)}
+                  onActiveOfferChange={(offer: Nullable<Offer>) =>
+                    setActiveOfferMemoised(offer)
+                  }
                   cardClass={CardClass.Cities}
                   wrapperClassName={
                     'cities__places-list places__list tabs__content'
@@ -77,9 +82,9 @@ function MainPage(): JSX.Element {
                   selectedPoint={
                     activeOffer
                       ? {
-                        location: activeOffer.location,
-                        id: activeOffer.id,
-                      }
+                          location: activeOffer.location,
+                          id: activeOffer.id,
+                        }
                       : undefined
                   }
                 />
