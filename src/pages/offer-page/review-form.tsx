@@ -7,6 +7,7 @@ import {
   getSingleOfferReviewPostingStatus,
 } from '../../store/single-offer-data-process/single-offer-data-process.selectors';
 import { RatingDescriptionsList } from '../../consts';
+import React from 'react';
 
 type ReviewFormProps = {
   currentOfferId: string;
@@ -68,7 +69,7 @@ function ReviewForm({ currentOfferId }: ReviewFormProps): JSX.Element {
       </label>
       <div className="reviews__rating-form form__rating">
         {[5, 4, 3, 2, 1].map((i) => (
-          <>
+          <React.Fragment key={i}>
             <input
               className="form__rating-input visually-hidden"
               name="rating"
@@ -87,7 +88,7 @@ function ReviewForm({ currentOfferId }: ReviewFormProps): JSX.Element {
                 <use xlinkHref="#icon-star" />
               </svg>
             </label>
-          </>
+          </React.Fragment>
         ))}
       </div>
       <textarea
