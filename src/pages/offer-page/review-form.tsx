@@ -82,7 +82,7 @@ function ReviewForm({ currentOfferId }: ReviewFormProps): JSX.Element {
             <label
               htmlFor={`${i}-stars`}
               className="reviews__rating-label form__rating-label"
-              title={RatingDescriptionsList[i + 1]}
+              title={RatingDescriptionsList[i - 1]}
             >
               <svg className="form__star-image" width={37} height={33}>
                 <use xlinkHref="#icon-star" />
