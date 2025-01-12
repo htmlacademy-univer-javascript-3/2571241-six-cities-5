@@ -54,7 +54,7 @@ export const fetchReviewsAction = createAsyncThunk<
 });
 
 export const postReviewAction = createAsyncThunk<
-  void,
+  ReviewFromPerson,
   ReviewData,
   {
     dispatch: AppDispatch;
@@ -63,13 +63,13 @@ export const postReviewAction = createAsyncThunk<
   }
 >(
   'review/postReview',
-  async ({ comment, rating, id }, { dispatch, extra: api }) => {
+  async ({ comment, rating, id }, { extra: api }) => {
     const parsedRating = Number(rating);
-    await api.post(`${APIRoutes.Comments}/${id}`, {
+    const response = await api.post(`${APIRoutes.Comments}/${id}`, {
       comment,
       rating: parsedRating,
     });
-    dispatch(fetchReviewsAction({ offerId: id }));
+    return response.data as ReviewFromPerson;
   }
 );
 

@@ -6,7 +6,7 @@ import {
   getSingleOffer,
   getSingleOfferDataLoadingStatus,
 } from '../../store/single-offer-data-process/single-offer-data-process.selectors';
-import CommentForm from './comment-form';
+import ReviewForm from './review-form';
 import { ReviewList } from './review-list';
 import { useEffect } from 'react';
 import {
@@ -81,7 +81,7 @@ function OfferPage(): JSX.Element {
                 <h1 className="offer__name">{currentOffer.title}</h1>
                 <button
                   className={`offer__bookmark-button${
-                    currentOffer.isFavorite ? '--active' : ''
+                    currentOffer.isFavorite ? ' offer__bookmark-button--active' : ''
                   } button`}
                   type="button"
                   onClick={handleBookmarkClick}
@@ -169,7 +169,7 @@ function OfferPage(): JSX.Element {
                 </h2>
                 <ReviewList reviews={reviews} />
                 {isAuthorized && (
-                  <CommentForm currentOfferId={currentOffer.id} />
+                  <ReviewForm currentOfferId={currentOffer.id} />
                 )}
               </section>
             </div>

@@ -8,6 +8,13 @@ export enum AppRoutes {
 }
 
 export const BEST_RATING = 5;
+export const RatingDescriptionsList = [
+  'terribly',
+  'badly',
+  'not bad',
+  'good',
+  'perfect',
+];
 
 export enum APIRoutes {
   Offers = '/offers',
