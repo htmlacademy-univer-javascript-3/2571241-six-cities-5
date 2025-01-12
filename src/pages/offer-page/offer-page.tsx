@@ -81,7 +81,7 @@ function OfferPage(): JSX.Element {
                 <h1 className="offer__name">{currentOffer.title}</h1>
                 <button
                   className={`offer__bookmark-button${
-                    currentOffer.isFavorite ? '--active' : ''
+                    currentOffer.isFavorite ? ' offer__bookmark-button--active' : ''
                   } button`}
                   type="button"
                   onClick={handleBookmarkClick}
