@@ -102,7 +102,7 @@ export const singleOfferDataProcess = createSlice({
         state.isReviewPosting = true;
       })
       .addCase(postReviewAction.fulfilled, (state, action) => {
-        state.reviews?.push(action.payload)
+        state.reviews?.push(action.payload);
         state.isReviewPosting = false;
         state.isFormAccepted = true;
       })

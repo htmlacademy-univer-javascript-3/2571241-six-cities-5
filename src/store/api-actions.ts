@@ -69,7 +69,7 @@ export const postReviewAction = createAsyncThunk<
       comment,
       rating: parsedRating,
     });
-    return response.data;
+    return response.data as ReviewFromPerson;
   }
 );
 
