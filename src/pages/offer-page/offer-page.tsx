@@ -6,7 +6,7 @@ import {
   getSingleOffer,
   getSingleOfferDataLoadingStatus,
 } from '../../store/single-offer-data-process/single-offer-data-process.selectors';
-import CommentForm from './comment-form';
+import ReviewForm from './review-form';
 import { ReviewList } from './review-list';
 import { useEffect } from 'react';
 import {
@@ -169,7 +169,7 @@ function OfferPage(): JSX.Element {
                 </h2>
                 <ReviewList reviews={reviews} />
                 {isAuthorized && (
-                  <CommentForm currentOfferId={currentOffer.id} />
+                  <ReviewForm currentOfferId={currentOffer.id} />
                 )}
               </section>
             </div>
