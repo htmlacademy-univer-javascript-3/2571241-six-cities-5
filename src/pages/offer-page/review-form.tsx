@@ -53,7 +53,7 @@ function ReviewForm({ currentOfferId }: ReviewFormProps): JSX.Element {
     ) {
       setIsFormValid(true);
     } else {
-      setIsFormValid(false);  
+      setIsFormValid(false);
     }
   }, [formState]);
 
