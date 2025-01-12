@@ -32,15 +32,18 @@ function CommentForm({ currentOfferId }: CommentFormProps): JSX.Element {
         id: currentOfferId,
       })
     );
+  };
 
-    if (isFormAccepted) {
+  useEffect(() => {
+    if(isFormAccepted){
       setFormState({
         review: '',
         rating: 0,
       });
+      console.log("AAAA")
       dispatch(setFormAcceptedStatus(false));
     }
-  };
+  })
 
   useEffect(() => {
     if (
@@ -71,6 +74,7 @@ function CommentForm({ currentOfferId }: CommentFormProps): JSX.Element {
           type="radio"
           onChange={handleChange}
           value={5}
+          checked={formState.rating == 5}
         />
         <label
           htmlFor="5-stars"
@@ -88,6 +92,7 @@ function CommentForm({ currentOfferId }: CommentFormProps): JSX.Element {
           type="radio"
           onChange={handleChange}
           value={4}
+          checked={formState.rating == 4}
         />
         <label
           htmlFor="4-stars"
@@ -105,6 +110,7 @@ function CommentForm({ currentOfferId }: CommentFormProps): JSX.Element {
           type="radio"
           onChange={handleChange}
           value={3}
+          checked={formState.rating == 3}
         />
         <label
           htmlFor="3-stars"
@@ -122,6 +128,7 @@ function CommentForm({ currentOfferId }: CommentFormProps): JSX.Element {
           type="radio"
           onChange={handleChange}
           value={2}
+          checked={formState.rating == 2}
         />
         <label
           htmlFor="2-stars"
@@ -139,6 +146,7 @@ function CommentForm({ currentOfferId }: CommentFormProps): JSX.Element {
           type="radio"
           onChange={handleChange}
           value={1}
+          checked={formState.rating == 1}
         />
         <label
           htmlFor="1-star"

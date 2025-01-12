@@ -8,6 +8,7 @@ import {
   fetchNearbyOffersAction,
   fetchReviewsAction,
   fetchSingleOfferAction,
+  postReviewAction,
 } from '../api-actions';
 
 const initialState: SingleOfferDataProcess = {
@@ -96,6 +97,17 @@ export const singleOfferDataProcess = createSlice({
       })
       .addCase(fetchSingleOfferAction.pending, (state) => {
         state.isSingleOfferDataLoading = true;
+      })
+      .addCase(postReviewAction.pending, (state) => {
+        state.isReviewPosting = true;
+      })
+      .addCase(postReviewAction.fulfilled, (state, action) => {
+        state.reviews?.push(action.payload)
+        state.isReviewPosting = false;
+        state.isFormAccepted = true;
+      })
+      .addCase(postReviewAction.rejected, (state) => {
+        state.isReviewPosting = false;
       });
   },
 });
